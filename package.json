@@ -3,7 +3,7 @@
     "deploy": "node deploy.mjs"
   },
   "dependencies": {
-    "@vercel/node": "^5.1.14",
+    "discord-interactions": "^4.1.1",
     "dotenv": "^16.5.0"
   },
   "devDependencies": {
