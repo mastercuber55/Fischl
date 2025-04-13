@@ -1,3 +1,11 @@
+import { InteractionType, InteractionResponseType } from 'discord-interactions';
+
 export default (req, res) => {
-  res.status(200).json({ type: 1 });  // Responding with a Pong message
+  const { type, data } = req.body;
+
+  if (type === InteractionType.PING) {
+    return res.send({ type: InteractionResponseType.PONG });
+  }
+
+  console.log(req.body);
 };
