@@ -1,6 +1,7 @@
 // api/interactions.js
 import { InteractionType, InteractionResponseType } from "discord-interactions";
 import { verifySignature } from "../utils/verifySignature.js";
+import { handleCmds } from "../utils/handleCmds.js";
 
 export const config = { api: { bodyParser: false } };
 
@@ -31,15 +32,16 @@ export default async function handler(req, res) {
 
     // ✅ Handle slash commands (later extend)
     if (body.type === InteractionType.APPLICATION_COMMAND) {
-      if (body.data.name === "echo") {
+      // if (body.data.name === "echo") {
 
-        const msg = body.data.options[0].value;
+      //   const msg = body.data.options[0].value;
 
-        return res.status(200).json({
-          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: { content: msg },
-        });
-      }
+      //   return res.status(200).json({
+      //     type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      //     data: { content: msg },
+      //   });
+      // }
+      return res.status(200).json(handleCmds)
     }
 
     return res.status(400).end("Unknown interaction");
