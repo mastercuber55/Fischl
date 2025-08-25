@@ -40,7 +40,7 @@ export default async function handler(req, res) {
       //     data: { content: msg },
       //   });
       // }
-      return res.status(200).json(handleCmds(body.data))
+      return res.status(200).json(await handleCmds(body.data))
     }
 
     return res.status(400).end("Unknown interaction");
