@@ -1,4 +1,3 @@
-// api/interactions.js
 import { InteractionType, InteractionResponseType } from "discord-interactions";
 import { verifySignature } from "../utils/verifySignature.js";
 import { handleCmds } from "../utils/handleCmds.js";
