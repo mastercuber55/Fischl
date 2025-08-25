@@ -41,7 +41,7 @@ const url = `https://discord.com/api/v10/applications/${CLIENT_ID}/commands`;
 
 import cmd from "./cmds/ping.js"
 
-const command = cmd.data
+command = cmd.data
 
 const res = await fetch(url, {
   method: "POST",
