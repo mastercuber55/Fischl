@@ -17,7 +17,7 @@ export default {
   ephemeral: false,
   run: async (data) => {
 
-    const msg = body.data.options[0].value
+    const msg = data.options[0].value
 
     return { content: msg };
   },
