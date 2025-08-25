@@ -1,38 +1,34 @@
 import fetch from "node-fetch";
 import 'dotenv/config';
+import { read, readdirSync } from "fs";
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 
 const url = `https://discord.com/api/v10/applications/${CLIENT_ID}/commands`;
 
-// const command = {
-//   name: "echo",
-//   description: "Repeats what you say",
-//   contexts: [2],
-//   options: [
-//     {
-//       name: "msg",
-//       description: "What to echo back",
-//       type: 3, // STRING
-//       required: true,
-//     },
-//   ],
+const commands = []
 
-//   dm_permission: true,
-// };
+for(const file of readdirSync("./cmds")) {
+  const cmd = await import(`./cmds/${file}`)
 
-import cmd from "./cmds/ping.js"
+  console.log(file)
 
-const command = cmd.data
+  cmd.default.data.contexts = [2]
+  cmd.default.data.dm_permission = true
+
+  commands.push(cmd.default.data)
+}
+
+console.log(JSON.stringify(commands))
 
 const res = await fetch(url, {
-  method: "POST",
+  method: "PUT",
   headers: {
     "Authorization": `Bot ${DISCORD_TOKEN}`,
     "Content-Type": "application/json",
   },
-  body: JSON.stringify(command),
+  body: JSON.stringify(commands),
 });
 
 const result = await res.json()
