@@ -31,10 +31,13 @@ export default async function handler(req, res) {
 
     // ✅ Handle slash commands (later extend)
     if (body.type === InteractionType.APPLICATION_COMMAND) {
-      if (body.data.name === "hello") {
+      if (body.data.name === "echo") {
+
+        const msg = body.data.options[0].value;
+
         return res.status(200).json({
           type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-          data: { content: "YOU ARE LESBIAN FOR CELESTIA" },
+          data: { content: msg },
         });
       }
     }
