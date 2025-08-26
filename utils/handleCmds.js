@@ -18,11 +18,11 @@ export async function handleCmds(data) {
 
     let json;
 
-    if(!cmd.default.defer)
-        json = { type: 4, data: await cmd.default.run(data) }
-    else {
+    if(cmd.default.defer) {
         handleDeferCmd(data, cmd)
         json = { type: 5, data: {} }
+    } else {
+        json = { type: 4, data: await cmd.default.run(data) }
     }
 
     if(cmd.ephemeral)
