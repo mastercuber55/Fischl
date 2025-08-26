@@ -1,30 +1,33 @@
-async function handleDeferCmd(data, cmd) {
-    const res = await cmd.default.run(data)
-
-    await fetch(`https://discord.com/api/v10/webhooks/${data.application_id}/${data.token}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-            ...res,
-            flags: cmd.ephemeral ? 64 : 0
-        })
-    })
-}
-
 export async function handleCmds(data) {
-    const cmd = await import(`../cmds/${data.name}.js`)
+    console.log("[handleCmds] received data:", data);
+
+    const cmd = await import(`../cmds/${data.name}.js`);
+    console.log("[handleCmds] imported command:", data.name, "defer =", cmd.default.defer);
 
     let json;
 
-    if(cmd.default.defer) {
-        handleDeferCmd(data, cmd)
-        json = { type: 5, data: {} }
+    if (cmd.default.defer) {
+        console.log("[handleCmds] deferring command:", data.name);
+
+        await fetch(`https://marina-six.vercel.app/api/defer`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data })
+        })
+        .then(r => console.log("[handleCmds] defer fetch status:", r.status))
+        .catch(e => console.error("[handleCmds] defer fetch error:", e));
+
+        json = { type: 5, data: {} };
     } else {
-        json = { type: 4, data: await cmd.default.run(data) }
+        console.log("[handleCmds] running immediately:", data.name);
+        json = { type: 4, data: await cmd.default.run(data) };
     }
 
-    if(cmd.ephemeral)
-        json.data.flags = 64
+    if (cmd.ephemeral) {
+        console.log("[handleCmds] ephemeral set for:", data.name);
+        json.data.flags = 64;
+    }
 
+    console.log("[handleCmds] returning json:", json);
     return json;
 }

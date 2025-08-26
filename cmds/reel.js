@@ -20,25 +20,21 @@ export default {
   run: async (data) => {
 
     const link = data.options[0].value
-    console.log(link)
-    return { content: await reel(link) };
+    const res = await reel(link)
+
+    console.log(res)
+
+    if(res.success == 1) 
+      return { content: `[Reel](${res.data[0].url}.mp4)` }
+    else
+      return { content: `Issue on API end 🥀.`}
   },
 };
 
 async function reel(video_url, type = 'instagram') {
-const response = await fetch("https://apihut.in/api/download/videos", {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    'X-Avatar-Key': 'avatarhubadmin'
-    },
-    body: JSON.stringify({
-        video_url,
-        type,
-    })
-});
-    
-    const result = await response.json();
-    console.log(result)
-    return result
+
+  console.log(video_url)
+  const response = await fetch(`https://marina-six.vercel.app/api/reel?link=${video_url}`)
+  const result = await response.json();
+  return result
 }
