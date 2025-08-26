@@ -21,9 +21,7 @@ export default {
 
     const link = data.options[0].value
 
-    const video_url = await reel(link)
-
-    return { content: video_url };
+    return { content: await reel(link) };
   },
 };
 
@@ -41,8 +39,6 @@ const response = await fetch("https://apihut.in/api/download/videos", {
 });
     
     const result = await response.json();
-    
-    console.log(await fetch(video_url))
-    
+    console.log(result)
     return result
 }
