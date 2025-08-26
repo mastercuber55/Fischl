@@ -27,15 +27,15 @@ export default {
 };
 
 async function reel(video_url, type = 'instagram') {
-const response = await fetch(process.env.API, {
+const response = await fetch("https://apihut.in/api/download/videos", {
     method: 'POST',
     headers: {
     'Content-Type': 'application/json',
     'X-Avatar-Key': 'avatarhubadmin'
     },
     body: JSON.stringify({
-    video_url,
-    type,
+        video_url,
+        type,
     })
 });
     
