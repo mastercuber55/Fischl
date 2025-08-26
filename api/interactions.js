@@ -24,14 +24,11 @@ export default async function handler(req, res) {
   try {
     const body = JSON.parse(rawBody);
 
-    // ✅ Handle Discord PING (verification)
     if (body.type === InteractionType.PING) {
       return res.status(200).json({ type: InteractionResponseType.PONG });
     }
-
-    // ✅ Handle slash commands (later extend)
     if (body.type === InteractionType.APPLICATION_COMMAND) {
-      return res.status(200).json(await handleCmds(body.data))
+      return res.status(200).json(await handleCmds(body.data, body.user, body.channel))
     }
 
     return res.status(400).end("Unknown interaction");

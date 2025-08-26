@@ -15,7 +15,7 @@ export default {
     dm_permission: true,
   },
   ephemeral: false,
-  run: async (data) => {
+  run: async ({ data }) => {
 
     const msg = data.options[0].value
 

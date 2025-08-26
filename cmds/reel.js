@@ -14,7 +14,7 @@ export default {
 
   },
   ephemeral: false,
-  run: async (data) => {
+  run: async ({ data }) => {
 
     const link = data.options[0].value
     const res = await reel(link)

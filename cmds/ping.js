@@ -4,7 +4,7 @@ export default {
     description: "AAAAAAA",
   },
   ephemeral: false,
-	run: async (data) => {
+	run: async ({ data }) => {
 		return { content: `# 🏓 | PONG!` };
 	},
 };
