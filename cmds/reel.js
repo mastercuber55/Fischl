@@ -3,7 +3,6 @@ export default {
   data: {
     name: "reel",
     description: "Send a instagram reel to your friend playable in discord!!",
-    contexts: [2],
     options: [
       {
         name: "link",
@@ -13,28 +12,34 @@ export default {
       },
     ],
 
-    dm_permission: true,
   },
-  defer: true,
   ephemeral: false,
   run: async (data) => {
 
     const link = data.options[0].value
     const res = await reel(link)
 
-    console.log(res)
-
     if(res.success == 1) 
-      return { content: `[Reel](${res.data[0].url}.mp4)` }
+      return { content: `[REEL](${res.data[0].url}.mp4)` }
     else
       return { content: `Issue on API end 🥀.`}
   },
 };
 
-async function reel(video_url, type = 'instagram') {
+async function reel(video_url) {
+  
+  const response = await fetch("https://apihut.in/api/download/videos", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-Avatar-Key": "avatarhubadmin"
+    },
+    body: JSON.stringify({
+      video_url,
+      type: "instagram"
+    })
+  })
 
-  console.log(video_url)
-  const response = await fetch(`https://marina-six.vercel.app/api/reel?link=${video_url}`)
   const result = await response.json();
   return result
 }
