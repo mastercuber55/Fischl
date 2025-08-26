@@ -1,6 +1,8 @@
 async function handleDeferCmd(data, cmd) {
     const res = await cmd.default.run(data)
     
+    console.log([data, cmd, res])
+
     await fetch(`https://discord.com/api/v10/webhooks/${data.application_id}/${data.token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
