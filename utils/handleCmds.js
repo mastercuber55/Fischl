@@ -1,7 +1,6 @@
 async function handleDeferCmd(data, cmd) {
-    const res = await cmd.default.run(data)
-    
     console.log([data, cmd, res])
+    const res = await cmd.default.run(data)
 
     await fetch(`https://discord.com/api/v10/webhooks/${data.application_id}/${data.token}`, {
         method: "POST",
@@ -17,8 +16,6 @@ export async function handleCmds(data) {
     const cmd = await import(`../cmds/${data.name}.js`)
 
     let json;
-
-    console.log([cmd.default.defer, data])
 
     if(cmd.default.defer) {
         handleDeferCmd(data, cmd)
