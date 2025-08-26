@@ -20,7 +20,7 @@ export default {
   run: async (data) => {
 
     const link = data.options[0].value
-
+    console.log(link)
     return { content: await reel(link) };
   },
 };
