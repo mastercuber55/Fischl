@@ -15,6 +15,7 @@ export default {
 
     dm_permission: true,
   },
+  defer: true,
   ephemeral: false,
   run: async (data) => {
 
