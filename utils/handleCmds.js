@@ -18,6 +18,8 @@ export async function handleCmds(data) {
 
     let json;
 
+    console.log([cmd.default.defer, data])
+
     if(cmd.default.defer) {
         handleDeferCmd(data, cmd)
         json = { type: 5, data: {} }

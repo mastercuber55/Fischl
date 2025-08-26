@@ -21,7 +21,7 @@ export default {
 
     const link = data.options[0].value
 
-    const video_url = await reel(link) // aaa
+    const video_url = await reel(link)
 
     return { content: video_url };
   },
