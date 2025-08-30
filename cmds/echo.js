@@ -1,8 +1,6 @@
 export default {
   data: {
-    name: "echo",
     description: "Repeats what you say",
-    contexts: [2],
     options: [
       {
         name: "msg",

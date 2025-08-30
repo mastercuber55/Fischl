@@ -13,6 +13,8 @@ async function getRawBody(req) {
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end();
 
+  // Inspired from:
+  // https://github.com/Inbestigator/dressed/blob/main/packages/dressed/src/server/server.ts#L102-L149
   const signature = req.headers["x-signature-ed25519"];
   const timestamp = req.headers["x-signature-timestamp"];
   const rawBody = await getRawBody(req);

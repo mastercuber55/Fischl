@@ -1,6 +1,5 @@
 export default {
 	data: {
-    name: "ping",
     description: "AAAAAAA",
   },
   ephemeral: false,

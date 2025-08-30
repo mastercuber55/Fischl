@@ -1,7 +1,6 @@
 
 export default {
   data: {
-    name: "reel",
     description: "Send a instagram reel to your friend playable in discord!!",
     options: [
       {

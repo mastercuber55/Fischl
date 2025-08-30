@@ -1,6 +1,5 @@
 export default {
   data: {
-    "name": "avatar",
     "description": "Get the avatar of a user",
     "type": 1,
     "options": [

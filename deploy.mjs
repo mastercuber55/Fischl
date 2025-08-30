@@ -12,9 +12,8 @@ const commands = []
 for(const file of readdirSync("./cmds")) {
   const cmd = await import(`./cmds/${file}`)
 
-  console.log(file)
-
-  cmd.default.data.contexts = [2]
+  cmd.default.data.name = file.replace(/\.js$/, "")
+  // cmd.default.data.contexts = [2]
   cmd.default.data.dm_permission = true
 
   commands.push(cmd.default.data)
