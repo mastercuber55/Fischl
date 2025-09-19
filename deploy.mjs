@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import 'dotenv/config';
-import { read, readdirSync } from "fs";
+import fs from "fs";
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
@@ -8,18 +8,23 @@ const CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 const url = `https://discord.com/api/v10/applications/${CLIENT_ID}/commands`;
 
 const commands = []
+const manifest = {}
 
-for(const file of readdirSync("./cmds")) {
-  const cmd = await import(`./cmds/${file}`)
+for(const cat of fs.readdirSync("./cmds")) {
+  console.log(cat)
+  for(const file of fs.readdirSync(`./cmds/${cat}`)) {
+    const cmd = await import(`./cmds/${cat}/${file}`)
+  
+    cmd.default.data.name = file.replace(/\.js$/, "")
+    cmd.default.data.contexts = [0, 1, 2]
+    cmd.default.data.dm_permission = true
 
-  cmd.default.data.name = file.replace(/\.js$/, "")
-  cmd.default.data.contexts = [0, 1, 2]
-  cmd.default.data.dm_permission = true
-
-  commands.push(cmd.default.data)
+    commands.push(cmd.default.data)
+    manifest[cmd.default.data.name] = `../cmds/${cat}/${file}`
+  }
 }
 
-console.log(JSON.stringify(commands))
+fs.writeFileSync("./utils/manifest.json", JSON.stringify(manifest, null, 2), "utf-8");
 
 const res = await fetch(url, {
   method: "PUT",

@@ -1,5 +1,9 @@
+import fs from "fs"
+
+const manifest = JSON.parse(fs.readFileSync("./manifest.json", "utf-8"));
+
 export async function handleCmds(data, user, channel) {
-    const cmd = await import(`../cmds/${data.name}.js`)
+    const cmd = await import(manifest[data.name])
 
     const json = { 
         type: 4,
