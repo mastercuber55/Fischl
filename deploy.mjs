@@ -20,7 +20,7 @@ for(const cat of fs.readdirSync("./cmds")) {
     cmd.default.data.dm_permission = true
 
     commands.push(cmd.default.data)
-    manifest[cmd.default.data.name] = `../cmds/${cat}/${file}`
+    manifest[cmd.default.data.name] = cat
   }
 }
 
