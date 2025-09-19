@@ -1,0 +1,95 @@
+[
+  {
+    "description": "Repeats what you say",
+    "options": [
+      {
+        "name": "msg",
+        "description": "What to echo back",
+        "type": 3,
+        "required": true
+      }
+    ],
+    "dm_permission": true,
+    "name": "echo",
+    "contexts": [
+      0,
+      1,
+      2
+    ]
+  },
+  {
+    "description": "Classical command, won't you agree.",
+    "name": "help",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true
+  },
+  {
+    "description": "Classical command, won't you agree.",
+    "name": "ping",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true
+  },
+  {
+    "description": "Get the avatar of a user",
+    "type": 1,
+    "options": [
+      {
+        "name": "user",
+        "description": "User to fetch avatar for",
+        "type": 6,
+        "required": false
+      }
+    ],
+    "name": "avatar",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true
+  },
+  {
+    "description": "Fetch an instagram profile.",
+    "options": [
+      {
+        "name": "username",
+        "description": "Their instagram username",
+        "type": 3,
+        "required": true
+      }
+    ],
+    "name": "insta",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true
+  },
+  {
+    "description": "Send a instagram reel to your friend playable in discord!!",
+    "options": [
+      {
+        "name": "link",
+        "description": "Reel Share URL",
+        "type": 3,
+        "required": true
+      }
+    ],
+    "name": "reel",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true
+  }
+]

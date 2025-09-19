@@ -13,11 +13,11 @@ export default {
   },
   ephemeral: false,
 
-  async run({data, user}) {
+  async run({data, user, utils}) {
 
-    const target = data.options?.find(opt => opt.name === "user")?.value || user.id;
-
-    const url = `https://cdn.discordapp.com/avatars/${target}/${data?.resolved?.users[target]?.avatar || user.avatar}.png?size=1024`;
+    const targetId = data.options?.find(opt => opt.name === "user")?.value || user.id
+    const targetUser = data?.resolved?.users?.[targetId] || user
+    const url = utils.avatarURL(targetUser)
 
     return {
       content: url

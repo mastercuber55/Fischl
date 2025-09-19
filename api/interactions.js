@@ -30,7 +30,9 @@ export default async function handler(req, res) {
       return res.status(200).json({ type: InteractionResponseType.PONG });
     }
     if (body.type === InteractionType.APPLICATION_COMMAND) {
-      return res.status(200).json(await handleCmds(body.data, body.user, body.channel))
+      const user = body.user || body.member.user;
+
+      return res.status(200).json(await handleCmds(body.data, user, body.channel))
     }
 
     return res.status(400).end("Unknown interaction");

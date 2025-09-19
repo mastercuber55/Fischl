@@ -1,4 +1,5 @@
 import manifest from "./manifest.json" with { type: "json" }
+import utils from "./functions.js"
 
 export async function handleCmds(data, user, channel) {
 
@@ -7,7 +8,7 @@ export async function handleCmds(data, user, channel) {
     const json = { 
         type: 4,
         data: {
-            ...await cmd.default.run({ data, user, channel }),
+            ...await cmd.default.run({ data, user, channel, utils }),
             flags: cmd.default.ephemeral ? 64 : 0
         } 
     }

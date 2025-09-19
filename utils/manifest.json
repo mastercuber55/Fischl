@@ -1,7 +1,8 @@
 {
-  "echo": "../cmds/basic/echo.js",
-  "ping": "../cmds/basic/ping.js",
-  "avatar": "../cmds/utils/avatar.js",
-  "insta": "../cmds/utils/insta.js",
-  "reel": "../cmds/utils/reel.js"
+  "echo": "basic",
+  "help": "basic",
+  "ping": "basic",
+  "avatar": "utils",
+  "insta": "utils",
+  "reel": "utils"
 }
