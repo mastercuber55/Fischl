@@ -18,14 +18,16 @@
     ]
   },
   {
-    "description": "Classical command, won't you agree.",
+    "options": [],
     "name": "help",
+    "description": "Display list of all available commands.",
     "contexts": [
       0,
       1,
       2
     ],
-    "dm_permission": true
+    "dm_permission": true,
+    "type": 1
   },
   {
     "description": "Classical command, won't you agree.",
@@ -38,23 +40,52 @@
     "dm_permission": true
   },
   {
-    "description": "Get the avatar of a user",
-    "type": 1,
-    "options": [
-      {
-        "name": "user",
-        "description": "User to fetch avatar for",
-        "type": 6,
-        "required": false
-      }
-    ],
-    "name": "avatar",
+    "description": "Flip a coin, decide the destiny.",
+    "name": "coinflip",
     "contexts": [
       0,
       1,
       2
     ],
     "dm_permission": true
+  },
+  {
+    "options": [
+      {
+        "name": "friend",
+        "description": "Whooo doo youu wanna playy with?!!",
+        "required": false,
+        "type": 6
+      }
+    ],
+    "name": "connect4",
+    "description": "Play a game of connect 4 with a friend :3",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [
+      {
+        "name": "user",
+        "description": "Whose avatar ya wanna see??",
+        "required": false,
+        "type": 6
+      }
+    ],
+    "name": "avatar",
+    "description": "Get the avatar of a user.",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
   },
   {
     "description": "Fetch an instagram profile.",

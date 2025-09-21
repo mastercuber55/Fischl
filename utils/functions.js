@@ -10,6 +10,16 @@ function avatarURL(user, {format = "png", size="1024" } = {}) {
     return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${format}?size=${size}`
 }
 
+function disableComponents(components) {
+  return components.map(row => ({
+    type: row.type,
+    components: row.components.map(comp => ({
+      ...comp,
+      disabled: true  
+    }))
+  }));
+}
+
 async function botUser() {
   const res = await fetch("https://discord.com/api/v10/users/@me", {
     headers: { Authorization: `Bot ${process.env.DISCORD_TOKEN}` },
@@ -18,5 +28,6 @@ async function botUser() {
 }
 export default { 
     avatarURL,
+    disableComponents,
     botUser
 }

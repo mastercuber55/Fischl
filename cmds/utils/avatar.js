@@ -1,16 +1,14 @@
+import { SlashCommandBuilder } from "discord.js";
+
 export default {
-  data: {
-    "description": "Get the avatar of a user",
-    "type": 1,
-    "options": [
-        {
-        "name": "user",
-        "description": "User to fetch avatar for",
-        "type": 6,
-        "required": false
-        }
-    ]
-  },
+  data: new SlashCommandBuilder()
+    .setName("a")
+    .setDescription("Get the avatar of a user.")
+    .addUserOption(opt => opt
+      .setName("user")
+      .setDescription("Whose avatar ya wanna see??")
+    )
+    .toJSON(),
   ephemeral: false,
 
   async run({data, user, utils}) {

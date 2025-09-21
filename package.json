@@ -4,7 +4,7 @@
     "deploy": "node deploy.mjs"
   },
   "dependencies": {
-    "discord-interactions": "^4.1.1",
+    "connect4-engine": "^1.0.6",
     "discord.js": "^14.22.1",
     "dotenv": "^16.5.0",
     "node-fetch": "^3.3.2",

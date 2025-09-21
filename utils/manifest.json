@@ -2,6 +2,8 @@
   "echo": "basic",
   "help": "basic",
   "ping": "basic",
+  "coinflip": "fun",
+  "connect4": "fun",
   "avatar": "utils",
   "insta": "utils",
   "reel": "utils"

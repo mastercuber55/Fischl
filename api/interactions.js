@@ -1,6 +1,7 @@
-import { InteractionType, InteractionResponseType } from "discord-interactions";
+import { InteractionType, InteractionResponseType } from "discord.js";
 import { verifySignature } from "../utils/verifySignature.js";
 import { handleCmds } from "../utils/handleCmds.js";
+import { handleBtns } from "../utils/handleBtns.js";
 
 export const config = { api: { bodyParser: false } };
 
@@ -25,17 +26,32 @@ export default async function handler(req, res) {
 
   try {
     const body = JSON.parse(rawBody);
+    let user;
+    let result;
 
-    if (body.type === InteractionType.PING) {
-      return res.status(200).json({ type: InteractionResponseType.PONG });
+    switch (body.type) {
+      case InteractionType.Ping:
+        result = res.status(200).json({ type: InteractionResponseType.PONG });
+        break;
+      
+      case InteractionType.ApplicationCommand:
+        user = body.user || body.member.user;
+        result = res.status(200).json(await handleCmds(body, user))
+        break;
+      
+      case InteractionType.MessageComponent:
+        user = body.user || body.member.user;
+        result = res.status(200).json(await handleBtns(body, user))
+        break;
+
+      default:
+        break;
     }
-    if (body.type === InteractionType.APPLICATION_COMMAND) {
-      const user = body.user || body.member.user;
 
-      return res.status(200).json(await handleCmds(body.data, user, body.channel))
-    }
-
+    if(result)
+      return result
     return res.status(400).end("Unknown interaction");
+  
   } catch (err) {
     console.error("Handler error:", err);
     return res.status(500).end();
