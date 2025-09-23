@@ -51,10 +51,12 @@ export default async({ args, message, user, utils }) => {
     const player = user.id
     const host = args[2]
     const friend = args[3]
-    const column = parseInt(args[4], 10);
     const embed = message.embeds[0]
     let { components } = message
+    const column = parseInt(args[4], 10);
     let turn = embed.fields[0].value.replace("<@", "").replace(">", "")
+
+    
 
     if(turn != player) {
       return {
@@ -64,6 +66,26 @@ export default async({ args, message, user, utils }) => {
           flags: 64
         }
       }
+    }
+
+    if(args[4] == "resign") {
+      embed.fields[0].name = `👑 Winner`
+      components = utils.disableComponents(components)
+
+      if(turn == host) 
+        turn = friend;
+      else 
+        turn = host
+
+      embed.fields[0].value = `<@${turn}> as ${embed.fields[0].value} ran away 🏃🥀.`
+
+      return {
+        type: InteractionResponseType.UpdateMessage,
+        data: {
+            embeds: [embed],
+            components
+        }
+    }
     }
 
     let data = embed.description.split("\n")
@@ -98,7 +120,6 @@ export default async({ args, message, user, utils }) => {
     return {
         type: InteractionResponseType.UpdateMessage,
         data: {
-            content: `${column}`,
             embeds: [embed],
             components
         }

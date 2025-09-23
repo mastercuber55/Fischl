@@ -2,6 +2,7 @@ import { InteractionType, InteractionResponseType } from "discord.js";
 import { verifySignature } from "../utils/verifySignature.js";
 import { handleCmds } from "../utils/handleCmds.js";
 import { handleBtns } from "../utils/handleBtns.js";
+import utils from "../utils/functions.js"
 
 export const config = { api: { bodyParser: false } };
 
@@ -52,8 +53,18 @@ export default async function handler(req, res) {
       return result
     return res.status(400).end("Unknown interaction");
   
-  } catch (err) {
-    console.error("Handler error:", err);
-    return res.status(500).end();
+  } catch (error) {
+    console.error(error)
+    // I know this might look stupid since we also get discord ping but if we are gonna disappoint discord with 500, we may as well not care about it at all.
+    // So this will be responding to button interactions and slash command interactions.
+    utils.sendMessage({ content: error.stack || error.toString() })
+        
+    return res.status(200).json({
+        type: InteractionResponseType.ChannelMessageWithSource,
+        data: {
+            content: "Something went wrong :(",
+            flags: 64
+        }
+    })
   }
 }

@@ -1,10 +1,10 @@
 {
-  "echo": "basic",
-  "help": "basic",
-  "ping": "basic",
-  "coinflip": "fun",
-  "connect4": "fun",
-  "avatar": "utils",
-  "insta": "utils",
-  "reel": "utils"
+  "echo": "Basic",
+  "help": "Basic",
+  "ping": "Basic",
+  "coinflip": "Fun",
+  "connect4": "Fun",
+  "avatar": "Utilities",
+  "insta": "Utilities",
+  "reel": "Utilities"
 }

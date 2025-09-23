@@ -42,18 +42,16 @@ export default async({ args, message, user, utils }) => {
             }
         }
 
-        const finalBtn = new ButtonBuilder()
-            .setDisabled(true)
-            .setCustomId("connect4|play|disabled")
-            .setEmoji(`🔢`)
-            .setStyle(ButtonStyle.Primary)
+        const resign = new ButtonBuilder()
+            .setCustomId(`connect4|play|${args[2]}|${args[3]}|resign`)
+            .setEmoji(`🏃`)
+            .setStyle(ButtonStyle.Danger)
 
-        row2.addComponents(finalBtn)
+        row2.addComponents(resign)
 
         return {
             type: InteractionResponseType.UpdateMessage,
             data: {
-                content: ``,
                 embeds: [embed],
                 components: [row1.toJSON(), row2.toJSON()]
             }

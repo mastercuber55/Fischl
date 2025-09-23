@@ -20,8 +20,8 @@ function disableComponents(components) {
   }));
 }
 
-async function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
-  const res = await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
+function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
+  fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
     method: "POST",
     headers: {
       "Authorization": `Bot ${process.env.DISCORD_TOKEN}`,
@@ -29,12 +29,10 @@ async function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
     },
     body: JSON.stringify(data)
   })
-
-  console.log(res)
 }
 
-async function botUser() {
-  const res = await fetch("https://discord.com/api/v10/users/@me", {
+async function getUser(id = "@me") {
+  const res = await fetch(`https://discord.com/api/v10/users/${id}`, {
     headers: { Authorization: `Bot ${process.env.DISCORD_TOKEN}` },
   });
   return res.json();
@@ -43,5 +41,5 @@ export default {
     avatarURL,
     sendMessage,
     disableComponents,
-    botUser
+    getUser
 }
