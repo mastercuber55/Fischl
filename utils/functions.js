@@ -20,6 +20,19 @@ function disableComponents(components) {
   }));
 }
 
+async function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
+  const res = await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bot ${process.env.DISCORD_TOKEN}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+
+  console.log(res)
+}
+
 async function botUser() {
   const res = await fetch("https://discord.com/api/v10/users/@me", {
     headers: { Authorization: `Bot ${process.env.DISCORD_TOKEN}` },
@@ -28,6 +41,7 @@ async function botUser() {
 }
 export default { 
     avatarURL,
+    sendMessage,
     disableComponents,
     botUser
 }

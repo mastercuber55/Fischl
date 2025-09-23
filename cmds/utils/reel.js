@@ -19,11 +19,20 @@ export default {
     const res = await reel(link)
 
     if(res.success == 1) 
-      return { content: `[REEL](${res.data[0].url}.mp4)` }
+      return { content: `[Instagram Reel](${cleanURL(res.data[0].url)})` }
     else
       return { content: `Issue on API end 🥀.`}
   },
 };
+
+function cleanURL(url) {
+  const urlObj = new URL(url);
+  const token = urlObj.searchParams.get('token');
+  if (token) {
+    return `${urlObj.origin}${urlObj.pathname}?token=${token}`;
+  }
+  return url; // if token param not found, return original
+}
 
 async function reel(video_url) {
   

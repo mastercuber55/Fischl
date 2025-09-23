@@ -12,10 +12,10 @@ export default async({ args, message, user, utils }) => {
     } else if (user.id == args[3]) {
         const embed = message.embeds[0]
         
-        emojis = [...`🍇🍊🍅🥭🍐🍉🫐`]
+        const emojis = [...`🍇🍊🍅🥭🍐🍉🫐`]
 
         embed.description = [
-            emojis.join(""),
+             emojis.join(""),
             `⬛⬛⬛⬛⬛⬛⬛`,
             `⬛⬛⬛⬛⬛⬛⬛`,
             `⬛⬛⬛⬛⬛⬛⬛`,
@@ -24,26 +24,38 @@ export default async({ args, message, user, utils }) => {
             `⬛⬛⬛⬛⬛⬛⬛`
         ].join("\n")
 
-        const btns = []
+        embed.fields = [{name: "💠 Turn", value: `<@${args[2]}>`}]
+
+        const row1 = new ActionRowBuilder()
+        const row2 = new ActionRowBuilder()
 
         for(let i = 0; i < 7; i++) {
             const btn = new ButtonBuilder()
                 .setEmoji(`${emojis[i]}`)
-                .setCustomId(`connect4|play|${i}|${args[2]}|${args[3]}`)
+                .setCustomId(`connect4|play|${args[2]}|${args[3]}|${i}`)
                 .setStyle(ButtonStyle.Primary)
 
-            btns.push(btn);
+            if(i < 4) {
+                row1.addComponents(btn)
+            } else {
+                row2.addComponents(btn)
+            }
         }
 
-        const row = new ActionRowBuilder()
-            .addComponents(...btns)
+        const finalBtn = new ButtonBuilder()
+            .setDisabled(true)
+            .setCustomId("connect4|play|disabled")
+            .setEmoji(`🔢`)
+            .setStyle(ButtonStyle.Primary)
+
+        row2.addComponents(finalBtn)
 
         return {
             type: InteractionResponseType.UpdateMessage,
             data: {
                 content: ``,
                 embeds: [embed],
-                components: [row]
+                components: [row1.toJSON(), row2.toJSON()]
             }
         }
     }
