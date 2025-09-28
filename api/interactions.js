@@ -45,7 +45,7 @@ export default async function handler(req, res) {
         result = res.status(200).json(await handleBtns(body, user))
         break;
 
-      default:
+      default: 
         break;
     }
 
