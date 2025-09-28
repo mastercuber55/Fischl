@@ -76,6 +76,56 @@
     "type": 1
   },
   {
+    "options": [],
+    "name": "insult",
+    "description": "Can't cook? I'm good at cooking",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [
+      {
+        "name": "person",
+        "description": "who da hell ya want to atomize???!",
+        "required": true,
+        "type": 6
+      }
+    ],
+    "name": "kill",
+    "description": "Kill someone annoying.",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [
+      {
+        "name": "love",
+        "description": "Who do you wanna kiss?!",
+        "required": true,
+        "type": 6
+      }
+    ],
+    "name": "kiss",
+    "description": "Kiss someone you like.",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
     "options": [
       {
         "name": "user",
