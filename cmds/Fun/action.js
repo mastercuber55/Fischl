@@ -1,4 +1,22 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, ContainerComponent, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+
+const emojis = {
+  kiss: "💋",
+  hug: "🫂",
+  punch: "👊",
+  kick: "💥",
+  poke: "👈",
+  peck: "😙",
+  tickle: "🤣",
+  yeet: "💥",
+  highfive: "🙏",
+  feed: "😋",
+  bite: "💢",
+  cuddle: "🫂",
+  slap: "🖐️",
+  handshake: "🤝",
+  handhold: "🤝"
+};
 
 export default {
   data: new SlashCommandBuilder()
@@ -10,7 +28,7 @@ export default {
         .setDescription("What do you wanna do with them 👾")
         .setRequired(true)
         .setChoices(
-          { name: "Kiss 😽", value: "kiss" },
+          { name: "Kiss 💋", value: "kiss" },
           { name: "Hug 🫂", value: "hug" },
           { name: "Punch 👊", value: "punch" },
           { name: "Kick 💥", value: "kick" },
@@ -24,7 +42,7 @@ export default {
           { name: "Cuddle 🫂", value: "cuddle" },
           { name: "Slap 🖐️", value: "slap" },
           { name: "Handshake 🤝", value: "handshake" },
-          { name: "Hold hand 🤝", value: "handhold" }          
+          { name: "Hold hand 🤝", value: "handhold" }
         )
     )
     .addUserOption((opt) =>
@@ -44,23 +62,25 @@ export default {
 
     const res = await fetch(`https://nekos.best/api/v2/${type.value}`);
     const json = await res.json();
-    const kiss = json.results[0];
+    const resData = json.results[0];
 
     const embed = new EmbedBuilder()
-      .setAuthor({ name: user.global_name, iconURL: utils.avatarURL(user) })
-      .setTitle(`**${user.global_name}** ${type.value}s **${targetUser.global_name}**`)
-      .setImage(kiss?.url)
+      .setDescription(`***${user.global_name}** ${type.value}s **${targetUser.global_name}***`)
+      .setImage(resData?.url)
       .setColor("Random")
-      .addFields({ name: "Anime", value: kiss?.anime_name, inline: true })
-      .setFooter({
-        text: targetUser.global_name,
-        iconURL: utils.avatarURL(targetUser),
-      })
-      .setTimestamp();
+
+    const back = new ButtonBuilder()
+      .setStyle(ButtonStyle.Primary)
+      .setCustomId(`action|${user.global_name}|${targetUser.global_name}|${type.value}`)
+      .setEmoji(emojis[type.value])
+      .setLabel(`${type.value} back`)
+
+    const row = new ActionRowBuilder()
+      .addComponents(back)
 
     return {
-      content: `<@${targetId}>`,
       embeds: [embed],
+      components: [row]
     };
   },
 };

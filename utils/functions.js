@@ -1,13 +1,13 @@
-function avatarURL(user, {format = "png", size="1024" } = {}) {
-    if(!user.avatar) {
-        const defaultIndex = BigInt(user.id) % 6n;
-        return `https://cdn.discordapp.com/embed/avatars/${defaultIndex}.png`;
-    }
+function avatarURL(user, { format = "png", size = "1024" } = {}) {
+  if (!user.avatar) {
+    const defaultIndex = BigInt(user.id) % 6n;
+    return `https://cdn.discordapp.com/embed/avatars/${defaultIndex}.png`;
+  }
 
-    const isGif = user.avatar.startsWith("a_");
-    if (isGif) format = "gif";
+  const isGif = user.avatar.startsWith("a_");
+  if (isGif) format = "gif";
 
-    return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${format}?size=${size}`
+  return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${format}?size=${size}`
 }
 
 function disableComponents(components) {
@@ -15,7 +15,7 @@ function disableComponents(components) {
     type: row.type,
     components: row.components.map(comp => ({
       ...comp,
-      disabled: true  
+      disabled: true
     }))
   }));
 }
@@ -37,9 +37,15 @@ async function getUser(id = "@me") {
   });
   return res.json();
 }
-export default { 
-    avatarURL,
-    sendMessage,
-    disableComponents,
-    getUser
+
+async function titleCase(str) {
+  return str.split(" ").map(word => word = word[0].toUpperCase() + word[0].slice(1)).join(" ")
+}
+
+export default {
+  avatarURL,
+  sendMessage,
+  disableComponents,
+  getUser,
+  titleCase
 }
