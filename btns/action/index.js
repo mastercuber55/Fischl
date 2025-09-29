@@ -48,7 +48,7 @@ export default async ({ args, message, user, utils }) => {
         .addComponents(back)
 
     // What if the slash command user presses the button?
-    if (user.global_name == args[1]) {
+    if (user.global_name == args[1]) { 
         embed.setDescription(`***${args[1]}** ${args[3]}s **${args[2]} again***`);
     } else if (user.global_name == args[2]) {
         embed.setDescription(`***${args[2]}** ${args[3]}s **${args[1]} back***`);
