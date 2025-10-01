@@ -47,6 +47,93 @@
     "dm_permission": true
   },
   {
+    "options": [
+      {
+        "type": 3,
+        "choices": [
+          {
+            "name": "Kiss 💋",
+            "value": "kiss"
+          },
+          {
+            "name": "Hug 🫂",
+            "value": "hug"
+          },
+          {
+            "name": "Punch 👊",
+            "value": "punch"
+          },
+          {
+            "name": "Kick 💥",
+            "value": "kick"
+          },
+          {
+            "name": "Poke 👈",
+            "value": "poke"
+          },
+          {
+            "name": "Peck 😙",
+            "value": "peck"
+          },
+          {
+            "name": "Tickle 🤣",
+            "value": "tickle"
+          },
+          {
+            "name": "Yeet 💥",
+            "value": "yeet"
+          },
+          {
+            "name": "High-five 🙏",
+            "value": "highfive"
+          },
+          {
+            "name": "Feed 😋",
+            "value": "feed"
+          },
+          {
+            "name": "Bite 💢",
+            "value": "bite"
+          },
+          {
+            "name": "Cuddle 🫂",
+            "value": "cuddle"
+          },
+          {
+            "name": "Slap 🖐️",
+            "value": "slap"
+          },
+          {
+            "name": "Handshake 🤝",
+            "value": "handshake"
+          },
+          {
+            "name": "Hold hand 🤝",
+            "value": "handhold"
+          }
+        ],
+        "name": "type",
+        "description": "What do you wanna do with them 👾",
+        "required": true
+      },
+      {
+        "name": "friend",
+        "description": "Who do you wanna interact with?!!",
+        "required": true,
+        "type": 6
+      }
+    ],
+    "name": "action",
+    "description": "Do something to someone...😈",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
     "description": "Flip a coin, decide the destiny.",
     "name": "coinflip",
     "contexts": [
@@ -79,44 +166,6 @@
     "options": [],
     "name": "insult",
     "description": "Can't cook? I'm good at cooking",
-    "contexts": [
-      0,
-      1,
-      2
-    ],
-    "dm_permission": true,
-    "type": 1
-  },
-  {
-    "options": [
-      {
-        "name": "person",
-        "description": "who da hell ya want to atomize???!",
-        "required": true,
-        "type": 6
-      }
-    ],
-    "name": "kill",
-    "description": "Kill someone annoying.",
-    "contexts": [
-      0,
-      1,
-      2
-    ],
-    "dm_permission": true,
-    "type": 1
-  },
-  {
-    "options": [
-      {
-        "name": "love",
-        "description": "Who do you wanna kiss?!",
-        "required": true,
-        "type": 6
-      }
-    ],
-    "name": "kiss",
-    "description": "Kiss someone you like.",
     "contexts": [
       0,
       1,
@@ -179,5 +228,24 @@
       2
     ],
     "dm_permission": true
+  },
+  {
+    "options": [
+      {
+        "type": 3,
+        "name": "username",
+        "description": "The username of the Roblox user",
+        "required": true
+      }
+    ],
+    "name": "roblox",
+    "description": "Get someone's Roblox profile",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
   }
 ]

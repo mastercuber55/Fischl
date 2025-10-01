@@ -2,12 +2,12 @@
   "echo": "Basic",
   "help": "Basic",
   "ping": "Basic",
+  "action": "Fun",
   "coinflip": "Fun",
   "connect4": "Fun",
   "insult": "Fun",
-  "kill": "Fun",
-  "kiss": "Fun",
   "avatar": "Utilities",
   "insta": "Utilities",
-  "reel": "Utilities"
+  "reel": "Utilities",
+  "roblox": "Utilities"
 }
