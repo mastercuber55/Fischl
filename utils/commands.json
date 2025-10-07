@@ -163,6 +163,25 @@
     "type": 1
   },
   {
+    "options": [
+      {
+        "name": "user",
+        "description": "Whose gender you wanna guess??",
+        "required": false,
+        "type": 6
+      }
+    ],
+    "name": "genderize",
+    "description": "Guess gender of a user.",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
     "options": [],
     "name": "insult",
     "description": "Can't cook? I'm good at cooking",
