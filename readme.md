@@ -31,3 +31,6 @@ Serverless bots have some natural constraints due to their short-lived runtime. 
 
 ## 🚀 Getting Started
 [![Watch the tutorial](https://img.youtube.com/vi/zuxg93XZAJk/0.jpg)](https://youtu.be/zuxg93XZAJk)
+
+## 🖥️ Community & Support
+Join the Discord server to chat about the project, ask questions, or follow development updates: https://discord.gg/7zvpWnE7QV
