@@ -65,13 +65,13 @@ export default {
     const resData = json.results[0];
 
     const embed = new EmbedBuilder()
-      .setDescription(`***${user.global_name}** ${type.value}s **${targetUser.global_name}***`)
+      .setDescription(`***${user.global_name || user.username}** ${type.value}s **${targetUser.global_name || targetUser.username}***`)
       .setImage(resData?.url)
       .setColor("Random")
 
     const back = new ButtonBuilder()
       .setStyle(ButtonStyle.Primary)
-      .setCustomId(`action|${user.global_name}|${targetUser.global_name}|${type.value}`)
+      .setCustomId(`action|${user.global_name || user.username}|${targetUser.global_name || targetUser.username}|${type.value}`)
       .setEmoji(emojis[type.value])
       .setLabel(`${type.value} back`)
 
