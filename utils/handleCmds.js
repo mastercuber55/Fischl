@@ -13,5 +13,9 @@ export async function handleCmds(body, user) {
         } 
     }
 
+    if (Math.random() < 5 / 100 && Object.keys(json.data).length == 2 && json.data.hasOwnProperty("content")) {
+        json.data.content += "\n-# Fischl’s in early development, consider joining our [server](https://discord.gg/7zvpWnE7QV) to share ideas and help us improve! <33"
+    }
+
     return json;
 }
