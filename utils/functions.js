@@ -47,5 +47,5 @@ export default {
   sendMessage,
   disableComponents,
   getUser,
-  titleCase
+  titleCase,
 }

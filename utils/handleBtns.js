@@ -1,4 +1,3 @@
-import { InteractionResponseType } from "discord.js";
 import utils from "./functions.js"
 
 export async function handleBtns(body, user) {

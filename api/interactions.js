@@ -4,7 +4,8 @@ import { handleCmds } from "../utils/handleCmds.js";
 import { handleBtns } from "../utils/handleBtns.js";
 import utils from "../utils/functions.js"
 
-export const config = { api: { bodyParser: false } };
+import { Redis } from "@upstash/redis";
+globalThis.redis = globalThis.redis || Redis.fromEnv();
 
 async function getRawBody(req) {
   let data = "";
@@ -38,11 +39,13 @@ export default async function handler(req, res) {
       case InteractionType.ApplicationCommand:
         user = body.user || body.member.user;
         result = res.status(200).json(await handleCmds(body, user))
+        // redis.incr("CommandsExecuted"); Meh, useless load being increased overtime
         break;
       
       case InteractionType.MessageComponent:
         user = body.user || body.member.user;
         result = res.status(200).json(await handleBtns(body, user))
+        // redis.incr("ButtonsPressed"); Meh, useless load being increased overtime
         break;
 
       default: 
