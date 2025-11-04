@@ -30,7 +30,7 @@ export default {
             .setAuthor({ name: user.global_name, iconURL: utils.avatarURL(user) })
             .setFooter({ text: me.global_name, iconURL: utils.avatarURL(me)})
             .setTimestamp()
-            .setThumbnail(utils.avatarURL(me))
+            .setImage(utils.getMyImg("landscape"))
         
         const arg = data?.options?.[0]?.value
         
@@ -46,6 +46,8 @@ export default {
                     embed.addFields({ name: `Option: ${option.name}`, value: option.description })
                 })
             }
+        } else {
+            embed.setDescription(`I, Fischl, have manifested within this domain to aid thee! Choose the path thy heart desires, and may fate guide thy curiosity!`)
         }
 
         const menu = new StringSelectMenuBuilder()

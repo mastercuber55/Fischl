@@ -1,3 +1,5 @@
+import images from "./images.json" with {type: "json"}
+
 function avatarURL(user, { format = "png", size = "1024" } = {}) {
   if (!user.avatar) {
     const defaultIndex = BigInt(user.id) % 6n;
@@ -38,6 +40,10 @@ async function getUser(id = "@me") {
   return res.json();
 }
 
+function getMyImg(size = "square") {
+  return images[size][Math.floor(Math.random() * images.landscape.length)];
+}
+
 async function titleCase(str) {
   return str.split(" ").map(word => word = word[0].toUpperCase() + word[0].slice(1)).join(" ")
 }
@@ -48,4 +54,5 @@ export default {
   disableComponents,
   getUser,
   titleCase,
+  getMyImg
 }

@@ -11,7 +11,7 @@ export default {
         .toJSON(),
     ephemeral: false,
     async run({ data, user }) {
-        const targetId = data.options?.find(opt => opt.name === "user")?.value || user.id
+        const targetId = data.options?.find(opt => opt.name === "traveler")?.value || user.id
 
         return {
             content: `<@${targetId}> has **${await redis.hget(targetId, "mora")}** moras.`
