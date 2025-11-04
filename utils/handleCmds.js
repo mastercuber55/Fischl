@@ -17,7 +17,7 @@ export async function handleCmds(body, user) {
         json.data.content += "\n-# Fischl’s in early development, consider joining our [server](https://discord.gg/7zvpWnE7QV) to share ideas and help us improve! <33"
     }
 
-    if (Math.random() < 5 / 100) {
+    if (Math.random() < 5 / 100 && Object.keys(json.data).length == 2 && json.data.hasOwnProperty("content")) {
         const amount = Math.round(Math.random() * 100);
         json.data.content += `\n-# Hehe~ The Prinzessin bestows upon thee ${amount} Mora! Spend it wisely, lest fate mock thy thrift!`
         redis.hincrby(`${user.id}`, "mora", amount);

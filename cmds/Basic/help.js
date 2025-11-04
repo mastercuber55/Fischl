@@ -3,7 +3,9 @@ import {
     SlashCommandBuilder,
     ActionRowBuilder,
     ButtonBuilder,
-    ButtonStyle 
+    ButtonStyle, 
+    StringSelectMenuBuilder,
+    StringSelectMenuOptionBuilder
 } from "discord.js"
 
 import commands from "../../utils/commands.json" with { type: "json" }
@@ -44,11 +46,22 @@ export default {
                     embed.addFields({ name: `Option: ${option.name}`, value: option.description })
                 })
             }
-        } else {
-            commands.forEach(cmd => {
-                embed.addFields({name: cmd.name, value: cmd.description})
-            })
         }
+
+        const menu = new StringSelectMenuBuilder()
+            .setCustomId(`help|${user.id}`)
+            .setPlaceholder("Select a command category!")
+            .addOptions(
+                new StringSelectMenuOptionBuilder()
+                    .setLabel("Basic")
+                    .setValue("Basic"),
+                new StringSelectMenuOptionBuilder()
+                    .setLabel("Fun")
+                    .setValue("Fun"),    
+                new StringSelectMenuOptionBuilder()
+                    .setLabel("Utilities")
+                    .setValue("Utilities"),
+            )
 
         const website = new ButtonBuilder()
             .setEmoji("🔗")
@@ -60,11 +73,19 @@ export default {
             .setEmoji("👾")
             .setLabel("Invite")
             .setStyle(ButtonStyle.Link)
-            .setURL(`https://discord.com/oauth2/authorize?client_id=1360871728770846733&permissions=2048&integration_type=0&scope=bot`)
+            .setURL(`https://discord.com/oauth2/authorize?client_id=1360871728770846733`)
+        
+        const support = new ButtonBuilder()
+            .setEmoji("💬")
+            .setLabel("Support")
+            .setStyle(ButtonStyle.Link)
+            .setURL(`https://discord.gg/7zvpWnE7QV`)
 
-        const row = new ActionRowBuilder()
-            .addComponents(website, invite)
+        const rowa = new ActionRowBuilder()
+            .addComponents(menu)
+        const rowb = new ActionRowBuilder()
+            .addComponents(website, invite, support)
 
-		return { embeds: [embed.toJSON()], components: [row.toJSON()] };
+		return { embeds: [embed], components: [rowa, rowb] };
 	},
 };
