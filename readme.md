@@ -2,6 +2,8 @@
 
 **Fischl** is a fully **serverless Discord bot** designed to handle **interaction-based commands** efficiently. It offers **lightweight deployment** without the need for dedicated hosting.
 
+**NOTE: As of 7th Novemeber, 2025, Fischl while can be used to develop your own bot, it is moving towards being developed as a Genshin Bot.**
+
 ## ✨ Features
 
 * Currently supports **slash commands/button interactions**.
