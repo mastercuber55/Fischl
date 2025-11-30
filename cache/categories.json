@@ -1,0 +1,15 @@
+{
+  "echo": "Basic",
+  "help": "Basic",
+  "ping": "Basic",
+  "profile": "Basic",
+  "action": "Fun",
+  "coinflip": "Fun",
+  "connect4": "Fun",
+  "genderize": "Fun",
+  "insult": "Fun",
+  "avatar": "Utilities",
+  "insta": "Utilities",
+  "reel": "Utilities",
+  "roblox": "Utilities"
+}
