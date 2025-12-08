@@ -1,10 +1,10 @@
 import { InteractionType, InteractionResponseType } from "discord.js";
-import { verifySignature } from "../utils/verifySignature.js";
-import { handleCmds } from "../utils/handleCmds.js";
-import { handleBtns } from "../utils/handleBtns.js";
-import utils from "../utils/functions.js"
+import { verifySignature } from "../handlers/verifySignature.js";
+import { handleCommands, handleComponents } from "../handlers/handleInteractions.js"
 
 import { Redis } from "@upstash/redis";
+import discord from "../handlers/discord.js";
+
 globalThis.redis = globalThis.redis || Redis.fromEnv();
 
 async function getRawBody(req) {
@@ -38,14 +38,12 @@ export default async function handler(req, res) {
       
       case InteractionType.ApplicationCommand:
         user = body.user || body.member.user;
-        result = res.status(200).json(await handleCmds(body, user))
-        // redis.incr("CommandsExecuted"); Meh, useless load being increased overtime
+        result = res.status(200).json(await handleCommands(body, user))
         break;
       
       case InteractionType.MessageComponent:
         user = body.user || body.member.user;
-        result = res.status(200).json(await handleBtns(body, user))
-        // redis.incr("ButtonsPressed"); Meh, useless load being increased overtime
+        result = res.status(200).json(await handleComponents(body, user))
         break;
 
       default: 
@@ -60,7 +58,7 @@ export default async function handler(req, res) {
     console.error(error)
     // I know this might look stupid since we also get discord ping but if we are gonna disappoint discord with 500, we may as well not care about it at all.
     // So this will be responding to button interactions and slash command interactions.
-    utils.sendMessage({ content: error.stack || error.toString() })
+    discord.sendMessage({ content: error.stack || error.toString() })
         
     return res.status(200).json({
         type: InteractionResponseType.ChannelMessageWithSource,

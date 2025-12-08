@@ -1,38 +1,27 @@
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js"
+
 
 export default {
-  data: {
-    description: "Send a instagram reel to your friend playable in discord!!",
-    options: [
-      {
-        name: "link",
-        description: "Reel Share URL",
-        type: 3, // STRING
-        required: true,
-      },
-    ],
-
-  },
-  ephemeral: false,
+  data: new SlashCommandBuilder()
+    .setName("a")
+    .setDescription("Send a instagram reel to your friend playable in discord!!")
+    .addStringOption(option => option
+      .setName("link")
+      .setDescription("Reel share url")
+      .setRequired(true)
+    ),
   run: async ({ data }) => {
 
     const link = data.options[0].value
     const res = await reel(link)
 
-    if(res.success == 1) 
-      return { content: `[Instagram Reel](${cleanURL(res.data[0].url)})` }
+    if(res.success == 1) {
+      return { content: `[Instagram Reel](${res.data[0].url.replace(/(&dl=1)+$/, "")})` }
+    }
     else
       return { content: `Issue on API end 🥀.`}
   },
 };
-
-function cleanURL(url) {
-  const urlObj = new URL(url);
-  const token = urlObj.searchParams.get('token');
-  if (token) {
-    return `${urlObj.origin}${urlObj.pathname}?token=${token}`;
-  }
-  return url; // if token param not found, return original
-}
 
 async function reel(video_url) {
   
