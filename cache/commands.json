@@ -250,22 +250,23 @@
     "dm_permission": true
   },
   {
-    "description": "Send a instagram reel to your friend playable in discord!!",
     "options": [
       {
-        "name": "link",
-        "description": "Reel Share URL",
         "type": 3,
+        "name": "link",
+        "description": "Reel share url",
         "required": true
       }
     ],
     "name": "reel",
+    "description": "Send a instagram reel to your friend playable in discord!!",
     "contexts": [
       0,
       1,
       2
     ],
-    "dm_permission": true
+    "dm_permission": true,
+    "type": 1
   },
   {
     "options": [

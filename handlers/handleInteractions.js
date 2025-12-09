@@ -1,12 +1,26 @@
 import { ComponentType } from "discord.js"
 import discord from "./discord.js"
 import categories from "../cache/categories.json" with { type: "json" }
+import { fileURLToPath, pathToFileURL } from "url";
+import path from "path";
 
 /** @param {APIInteraction} body */
 export async function handleCommands(body, user) {
 
     const { data } = body;
-    const cmd = await import(`../interactions/commands/${categories[data.name]}/${data.name}.js`)
+
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
+    
+    const cmdPath = path.join(
+        __dirname,
+        "..",
+        "interactions",
+        "commands",
+        categories[data.name],
+        `${data.name}.js`
+    );
+
+    const cmd = await import(pathToFileURL(cmdPath).href);
 
     const json = {
         type: 4,
@@ -37,23 +51,23 @@ export async function handleCommands(body, user) {
 
 /** @param {APIInteraction} body */
 export async function handleComponents(body, user) {
+
     const args = body.data.custom_id.split("|")
-    
     const isButton = body.data.component_type == ComponentType.Button;
     const { message } = body;
     const values = body.data.values || [];
 
-    const folder = `../interactions/${isButton ? "buttons" : "selectmenus"}/${args[0]}`
+    const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-    const index = await import(`${folder}/index.js`);
+    const index = await import(pathToFileURL(path.join(__dirname, "..", "interactions", isButton ? "buttons" : "selectmenus", args[0],"index.js")).href);
 
     let json;
-    // Early handler to throw off random people or if it requries simple handling.
+    // Early handler for basic stuff
     json = await index.default({ args, values, message, user, discord });
 
     if (!json) {
-        const btn = await import(`${folder}/${args[1]}.js`);
-        json = await btn.default({ args, message, user, values, discord });
+        const component = await import(pathToFileURL(path.join(__dirname, "..", "interactions", isButton ? "buttons" : "selectmenus", args[0], `${args[1]}.js`)).href);
+        json = await component.default({ args, message, user, values, discord });
     }
 
     return json;

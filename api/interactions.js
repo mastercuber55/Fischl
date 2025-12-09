@@ -63,7 +63,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
         type: InteractionResponseType.ChannelMessageWithSource,
         data: {
-            content: "Something went wrong :(",
+            content: "Something went wrong :(\nConsider joining the [support server](https://discord.gg/7zvpWnE7QV)",
             flags: 64
         }
     })
