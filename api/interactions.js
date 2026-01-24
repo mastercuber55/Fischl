@@ -56,14 +56,15 @@ export default async function handler(req, res) {
   
   } catch (error) {
     console.error(error)
-    // I know this might look stupid since we also get discord ping but if we are gonna disappoint discord with 500, we may as well not care about it at all.
+    // I know this might look stupid since we also get discord ping 
+    // but if we are gonna disappoint discord with 500, we may as well not care about it at all.
     // So this will be responding to button interactions and slash command interactions.
     discord.sendMessage({ content: error.stack || error.toString() })
         
     return res.status(200).json({
         type: InteractionResponseType.ChannelMessageWithSource,
         data: {
-            content: "Something went wrong :(\nConsider joining the [support server](https://discord.gg/7zvpWnE7QV)",
+            content: "Something went wrong :(",
             flags: 64
         }
     })
