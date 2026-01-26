@@ -63,10 +63,7 @@ export default {
                 });
             }
         } else {
-            embed.setDescription(
-                "🌙 *Hearken!* I, Fischl, have manifested within this domain to guide thee.\n\n" +
-                "Choose a path below, and let fate unveil the commands that align with thy curiosity ✨"
-            );
+            embed.setDescription("I, Fischl, have manifested within this domain to aid thee! Choose the path thy heart desires, and may fate guide thy curiosity!");
         }
 
         const menu = new StringSelectMenuBuilder()
