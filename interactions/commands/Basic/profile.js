@@ -12,6 +12,7 @@ export default {
         .toJSON(),
     ephemeral: false,
     async run({ data, user, discord }) {
+        
         const targetId = data.options?.find(opt => opt.name === "traveler")?.value || user.id
         const targetUser = data?.resolved?.users?.[targetId] || user
 

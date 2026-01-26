@@ -10,6 +10,7 @@ export default {
       .setDescription("Thy decree to be echoed.")
     ),
   ephemeral: false,
+  allowEvents: true,
   run: async ({ data }) => {
 
     const msg = data.options[0].value

@@ -30,11 +30,7 @@ export async function handleCommands(body, user) {
         }
     }
 
-    if(
-        data.name != "reel" &&
-        Object.keys(json.data).length == 2 
-        && Object.prototype.hasOwnProperty.call(json.data, "content")
-    ) { 
+    if(cmd.default.allowEvents) { 
         const rand = Math.random();
 
         if(rand < 0.05) {

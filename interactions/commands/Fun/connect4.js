@@ -2,7 +2,7 @@ import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, Embe
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("a")
+    .setName("connect4")
     .setDescription("Play a game of connect 4 with a friend :3")
     .addUserOption(opt => opt
       .setName("friend")

@@ -20,7 +20,7 @@ const emojis = {
 
 export default {
   data: new SlashCommandBuilder()
-    .setName("a")
+    .setName("action")
     .setDescription("Do something to someone...😈")
     .addStringOption((opt) =>
       opt

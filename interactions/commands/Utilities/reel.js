@@ -1,25 +1,28 @@
 import { SlashCommandBuilder } from "discord.js"
 
-
 export default {
   data: new SlashCommandBuilder()
-    .setName("a")
-    .setDescription("Send a instagram reel to your friend playable in discord!!")
-    .addStringOption(option => option
-      .setName("link")
-      .setDescription("Reel share url")
-      .setRequired(true)
+    .setName("reel")
+    .setDescription("Send an Instagram reel through the winds of fate ✨")
+    .addStringOption(option =>
+      option
+        .setName("link")
+        .setDescription("The reel link you wish to share 🌙")
+        .setRequired(true)
     ),
   run: async ({ data }) => {
-
     const link = data.options[0].value
     const res = await reel(link)
 
-    if(res.success == 1) {
-      return { content: `[Instagram Reel](${res.data[0].url.replace(/(&dl=1)+$/, "")})` }
+    if (res.success == 1) {
+      return {
+        content: `📸✨ *A vision appears…*\n\n[Instagram Reel](${res.data[0].url.replace(/(&dl=1)+$/, "")})`
+      }
+    } else {
+      return {
+        content: `🌫️ *The winds falter…*\n\nSomething went wrong on our end 🥀`
+      }
     }
-    else
-      return { content: `Issue on API end 🥀.`}
   },
 };
 
