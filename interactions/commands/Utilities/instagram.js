@@ -1,7 +1,5 @@
 // @ts-nocheck
 import { SlashCommandBuilder } from "@discordjs/builders";
-import fetch from "node-fetch";
-
 export default {
   data: new SlashCommandBuilder()
     .setName("instagram")

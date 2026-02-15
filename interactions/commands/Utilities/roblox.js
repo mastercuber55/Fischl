@@ -1,6 +1,5 @@
 // @ts-nocheck
 import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
-import fetch from "node-fetch";
 
 async function jfetch(url, opts) {
   const r = await fetch(url, opts);

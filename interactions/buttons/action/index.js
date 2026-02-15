@@ -2,9 +2,8 @@ import {
     EmbedBuilder, 
     ButtonBuilder, 
     ActionRowBuilder, 
-    ButtonStyle 
 } from "@discordjs/builders"
-import { InteractionResponseType } from "discord-api-types/v10"
+import { InteractionResponseType, ButtonStyle } from "discord-api-types/v10"
 
 export default async ({ args, user }) => {
 

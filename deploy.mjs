@@ -25,7 +25,6 @@ for(const cat of fs.readdirSync("./interactions/commands")) {
 
 fs.writeFileSync("./cache/categories.json", JSON.stringify(manifest, null, 2), "utf-8");
 fs.writeFileSync("./cache/commands.json", JSON.stringify(commands, null, 2), "utf-8");
-// Storing the commands as well as a cache for displaying in help command
 
 const res = await fetch(url, {
   method: "PUT",
@@ -37,3 +36,4 @@ const res = await fetch(url, {
 });
 
 const result = await res.json()
+console.log(result)
