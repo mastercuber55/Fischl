@@ -1,6 +1,7 @@
-import { InteractionResponseType } from "discord.js"
+import { InteractionResponseType } from "discord-api-types/v10"
+import DCutils from "../../../handlers/DCutils.js"
 
-export default async({ args, message, user, discord }) => {
+export default async({ args, message, user }) => {
     
     const embed = message.embeds[0]
 
@@ -16,7 +17,7 @@ export default async({ args, message, user, discord }) => {
         type: InteractionResponseType.UpdateMessage,
         data: {
             embeds: [embed],
-            components: discord.disableComponents(message.components)
+            components: DCutils.disableComponents(message.components)
         }
     }
 }

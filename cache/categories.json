@@ -1,15 +1,14 @@
 {
-  "echo": "Basic",
   "help": "Basic",
-  "ping": "Basic",
   "profile": "Basic",
+  "say": "Basic",
   "action": "Fun",
   "coinflip": "Fun",
   "connect4": "Fun",
   "genderize": "Fun",
-  "insult": "Fun",
+  "search": "Fun",
   "avatar": "Utilities",
-  "insta": "Utilities",
+  "instagram": "Utilities",
   "reel": "Utilities",
   "roblox": "Utilities"
 }

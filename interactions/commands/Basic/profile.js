@@ -1,5 +1,6 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders"
 import images from "../../../cache/images.js"
+import DCutils from "../../../handlers/DCutils.js"
 
 export default {
     data: new SlashCommandBuilder()
@@ -11,17 +12,17 @@ export default {
         )
         .toJSON(),
     ephemeral: false,
-    async run({ data, user, discord }) {
+    async run({ data, user }) {
         
         const targetId = data.options?.find(opt => opt.name === "traveler")?.value || user.id
         const targetUser = data?.resolved?.users?.[targetId] || user
 
-        const avatarURL = discord.avatarURL(targetUser)
+        const avatarURL = DCutils.avatarURL(targetUser)
 
         const mora = String(await redis.hget(targetId, "mora") || 0)
 
         const embed = new EmbedBuilder()
-            .setColor("Random")
+            // .setColor("Random")
             .setAuthor({ name: targetUser.global_name || targetUser.username, iconURL: avatarURL })
             .setThumbnail(avatarURL)
             // .setDescription(`-# *Travelers will be able to add custom description here *`)

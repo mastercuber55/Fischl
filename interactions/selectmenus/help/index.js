@@ -1,4 +1,5 @@
-import { EmbedBuilder, InteractionResponseType } from "discord.js"
+import { EmbedBuilder } from "@discordjs/builders"
+import { InteractionResponseType } from "discord-api-types/v10"
 import commands from "../../../cache/commands.json" with { type: "json" }
 import categories from "../../../cache/categories.json" with { type: "json" }
 

@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
+import DCutils from "../../../handlers/DCutils.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -12,17 +13,17 @@ export default {
     .toJSON(),
   ephemeral: false,
 
-  async run({ data, user, discord }) {
+  async run({ data, user }) {
     const targetId =
       data.options?.find(opt => opt.name === "traveler")?.value || user.id;
 
     const targetUser = data?.resolved?.users?.[targetId] || user;
-    const url = discord.avatarURL(targetUser, { size: 1024 });
+    const url = DCutils.avatarURL(targetUser, { size: "1024" });
 
     const embed = new EmbedBuilder()
       .setTitle(`✨ ${targetUser.username}'s Avatar`)
       .setImage(url)
-      .setColor("Random");
+      // .setColor("Random");
 
     return {
       embeds: [embed]

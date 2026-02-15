@@ -1,4 +1,5 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, InteractionResponseType } from "discord.js"
+import { ActionRowBuilder, ButtonBuilder } from "@discordjs/builders"
+import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10"
 
 export default async({ args, message, user }) => {
     if(user.id == args[2]) {
@@ -31,7 +32,7 @@ export default async({ args, message, user }) => {
 
         for(let i = 0; i < 7; i++) {
             const btn = new ButtonBuilder()
-                .setEmoji(`${emojis[i]}`)
+                .setEmoji({ name: emojis[i] })
                 .setCustomId(`connect4|play|${args[2]}|${args[3]}|${i}`)
                 .setStyle(ButtonStyle.Primary)
 
@@ -44,7 +45,7 @@ export default async({ args, message, user }) => {
 
         const resign = new ButtonBuilder()
             .setCustomId(`connect4|play|${args[2]}|${args[3]}|resign`)
-            .setEmoji(`🏃`)
+            .setEmoji({ name: `🏃` })
             .setStyle(ButtonStyle.Danger)
 
         row2.addComponents(resign)

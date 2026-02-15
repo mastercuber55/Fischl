@@ -3,14 +3,15 @@ import {
     SlashCommandBuilder,
     ActionRowBuilder,
     ButtonBuilder,
-    ButtonStyle, 
     StringSelectMenuBuilder,
     StringSelectMenuOptionBuilder
-} from "discord.js"
+} from "@discordjs/builders"
+import { ButtonStyle } from "discord-api-types/v10"
 
 import commands from "../../../cache/commands.json" with { type: "json" }
 import categories from "../../../cache/categories.json" with { type: "json" }
 import images from "../../../cache/images.js"
+import DCutils from "../../../handlers/DCutils.js"
 
 export default {
     data: new SlashCommandBuilder()
@@ -25,18 +26,18 @@ export default {
 
     ephemeral: false,
 
-    run: async ({ data, user, discord }) => {
-        const me = await discord.getUser();
+    run: async ({ data, user }) => {
+        const me = await DCutils.getUser();
 
         let embed = new EmbedBuilder()
-            .setColor("Random")
+            // .setColor("Random")
             .setAuthor({
                 name: user.global_name,
-                iconURL: discord.avatarURL(user)
+                iconURL: DCutils.avatarURL(user)
             })
             .setFooter({
                 text: me.global_name,
-                iconURL: discord.avatarURL(me)
+                iconURL: DCutils.avatarURL(me)
             })
             .setTimestamp()
             .setImage(images.random("landscape"));
@@ -82,13 +83,13 @@ export default {
             );
 
         const website = new ButtonBuilder()
-            .setEmoji("🔗")
+            .setEmoji({ name: "🔗" })
             .setLabel("Website")
             .setURL("https://github.com/mastercuber55/Fischl")
             .setStyle(ButtonStyle.Link);
 
         const invite = new ButtonBuilder()
-            .setEmoji("👾")
+            .setEmoji({ name: "👾" })
             .setLabel("Invite")
             .setStyle(ButtonStyle.Link)
             .setURL("https://discord.com/oauth2/authorize?client_id=1360871728770846733");

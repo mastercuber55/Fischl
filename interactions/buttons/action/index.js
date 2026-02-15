@@ -1,22 +1,10 @@
-import { InteractionResponseType, EmbedBuilder, ButtonBuilder, ActionRowBuilder, ButtonStyle } from "discord.js"
-
-const emojis = {
-    kiss: "💋",
-    hug: "🫂",
-    punch: "👊",
-    kick: "💥",
-    poke: "👉",
-    peck: "😙",
-    tickle: "🤣",
-    yeet: "💥",
-    highfive: "🙏",
-    feed: "😋",
-    bite: "💢",
-    cuddle: "🫂",
-    slap: "🖐️",
-    handshake: "🤝",
-    handhold: "🤝"
-};
+import { 
+    EmbedBuilder, 
+    ButtonBuilder, 
+    ActionRowBuilder, 
+    ButtonStyle 
+} from "@discordjs/builders"
+import { InteractionResponseType } from "discord-api-types/v10"
 
 export default async ({ args, user }) => {
 
@@ -36,12 +24,11 @@ export default async ({ args, user }) => {
 
     const embed = new EmbedBuilder()
         .setImage(resData?.url)
-        .setColor("Random")
+        // .setColor("Random")
 
     const back = new ButtonBuilder()
         .setStyle(ButtonStyle.Primary)
         .setCustomId(`action|${args[1]}|${args[2]}|${args[3]}`)
-        .setEmoji(emojis[args[3]])
         .setLabel(`${args[3]} back`)
 
     const row = new ActionRowBuilder()

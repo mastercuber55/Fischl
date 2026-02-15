@@ -1,4 +1,5 @@
-import { InteractionResponseType } from "discord.js"
+import { InteractionResponseType } from "discord-api-types/v10"
+import DCutils from "../../../handlers/DCutils.js";
 
 const insert = (column, data, block) => {
   for (let row = data.length - 1; row > 0; row--) { // bottom to up
@@ -46,7 +47,7 @@ const checkWinner = (data, row, col) => {
   return false;
 }
 
-export default async({ args, message, user, discord }) => {
+export default async({ args, message, user }) => {
 
     const player = user.id
     const host = args[2]
@@ -70,7 +71,7 @@ export default async({ args, message, user, discord }) => {
 
     if(args[4] == "resign") {
       embed.fields[0].name = `👑 Winner`
-      components = discord.disableComponents(components)
+      components = DCutils.disableComponents(components)
 
       if(turn == host) 
         turn = friend;
@@ -106,7 +107,7 @@ export default async({ args, message, user, discord }) => {
     embed.description = data.join("\n")
 
     if(checkWinner(data, row, column)) {
-      components = discord.disableComponents(components)
+      components = DCutils.disableComponents(components)
       embed.fields[0].name = `👑 Winner`
     } else {
       if(turn == host) 

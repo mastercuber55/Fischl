@@ -1,22 +1,11 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, SlashCommandBuilder } from "discord.js";
-
-const emojis = {
-  kiss: "💋",
-  hug: "🫂",
-  punch: "👊",
-  kick: "💥",
-  poke: "👈",
-  peck: "😙",
-  tickle: "🤣",
-  yeet: "💥",
-  highfive: "🙏",
-  feed: "😋",
-  bite: "💢",
-  cuddle: "🫂",
-  slap: "🖐️",
-  handshake: "🤝",
-  handhold: "🤝"
-};
+import { 
+  ActionRowBuilder, 
+  ButtonBuilder, 
+  EmbedBuilder, 
+  SlashCommandBuilder 
+} from "@discordjs/builders";
+import { ButtonStyle } from 'discord-api-types/v10';
+import { ApplicationCommandOptionType } from "discord-api-types/v10";
 
 export default {
   data: new SlashCommandBuilder()
@@ -53,27 +42,32 @@ export default {
     )
     .toJSON(),
   ephemeral: false,
-
+  /**
+ * @param {object} ctx
+ * @param {import("discord-api-types/v10").APIChatInputApplicationCommandInteractionData} ctx.data
+ * @param {import("discord-api-types/v10").APIUser} ctx.user
+ */
   async run({ data, user }) {
-    const targetId = data.options?.find((opt) => opt.name == "friend")?.value;
+    const option1 = data.options?.find((opt) => opt.name == "friend");
+    const targetId = option1?.type === ApplicationCommandOptionType.User ? option1.value : null;
     const targetUser = data?.resolved?.users?.[targetId];
 
-    const type = data.options?.find(opt => opt.name == "type")
+    const option2 = data.options?.find(opt => opt.name == "type")
+    const type = option2?.type === ApplicationCommandOptionType.String ? option2.value : null;
 
-    const res = await fetch(`https://nekos.best/api/v2/${type.value}`);
+    const res = await fetch(`https://nekos.best/api/v2/${type}`);
     const json = await res.json();
     const resData = json.results[0];
 
     const embed = new EmbedBuilder()
-      .setDescription(`***${user.global_name || user.username}** ${type.value}s **${targetUser.global_name || targetUser.username}***`)
+      .setDescription(`***${user.global_name || user.username}** ${type}s **${targetUser.global_name || targetUser.username}***`)
       .setImage(resData?.url)
-      .setColor("Random")
+      // .setColor("Random")
 
     const back = new ButtonBuilder()
       .setStyle(ButtonStyle.Primary)
-      .setCustomId(`action|${user.global_name || user.username}|${targetUser.global_name || targetUser.username}|${type.value}`)
-      .setEmoji(emojis[type.value])
-      .setLabel(`${type.value} back`)
+      .setCustomId(`action|${user.global_name || user.username}|${targetUser.global_name || targetUser.username}|${type}`)
+      .setLabel(`${type} back`)
 
     const row = new ActionRowBuilder()
       .addComponents(back)

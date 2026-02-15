@@ -1,4 +1,11 @@
-import { SlashCommandBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js"
+import { 
+    SlashCommandBuilder, 
+    ActionRowBuilder, 
+    ButtonBuilder, 
+    EmbedBuilder 
+} from "@discordjs/builders"
+import DCutils from "../../../handlers/DCutils.js"
+import { ApplicationCommandOptionType, ButtonStyle } from "discord-api-types/v10";
 
 export default {
   data: new SlashCommandBuilder()
@@ -11,9 +18,16 @@ export default {
     )
     .toJSON(),
   ephemeral: false,
-  async run({data, user, discord}) {
-    
-    const targetId = data.options?.find(opt => opt.name === "friend")?.value
+  /**
+ * @param {object} ctx
+ * @param {import("discord-api-types/v10").APIChatInputApplicationCommandInteractionData} ctx.data
+ * @param {import("discord-api-types/v10").APIUser} ctx.user
+ */
+  async run({ data, user }) {
+
+    const option = data.options?.find(opt => opt.name === "friend")
+    const targetId = option?.type === ApplicationCommandOptionType.User ? option.value : null;
+
     const friend = data?.resolved?.users?.[targetId]
 
     if(!friend) { 
@@ -25,21 +39,21 @@ export default {
     }
 
     const invite = new EmbedBuilder()
-        .setAuthor({ name: user.global_name, iconURL: discord.avatarURL(user) })
-        .setFooter({ text: friend.global_name, iconURL: discord.avatarURL(friend) })
-        .setColor("Random")
+        .setAuthor({ name: user.global_name, iconURL: DCutils.avatarURL(user) })
+        .setFooter({ text: friend.global_name, iconURL: DCutils.avatarURL(friend) })
+        // .setColor("Random")
         .setTitle("Connect 4")
         .setDescription(`**${friend.global_name}**, Would you like to have a game of connect 4 with **${user.global_name}**??`)
         .setTimestamp()
     
     const accept = new ButtonBuilder()
-        .setEmoji("✅")
+        .setEmoji({ name: "✅" })
         .setCustomId(`connect4|accept|${user.id}|${targetId}`)
         .setLabel("Accept")
         .setStyle(ButtonStyle.Success)
     
     const refuse = new ButtonBuilder()
-        .setEmoji("❌")
+        .setEmoji({ name: "❌" })
         .setCustomId(`connect4|refuse|${user.id}|${targetId}`)
         .setLabel("Refuse")
         .setStyle(ButtonStyle.Danger)

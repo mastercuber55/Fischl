@@ -1,4 +1,5 @@
-import { SlashCommandBuilder } from "discord.js";
+// @ts-nocheck
+import { SlashCommandBuilder } from "@discordjs/builders";
 import fetch from "node-fetch";
 
 export default {

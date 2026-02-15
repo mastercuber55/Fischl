@@ -1,3 +1,5 @@
+// module: DCutils
+
 export function avatarURL(user, { format = "png", size = "1024" } = {}) {
   if (!user.avatar) {
     const defaultIndex = BigInt(user.id) % 6n;

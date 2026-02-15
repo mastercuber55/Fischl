@@ -1,4 +1,4 @@
-import { EmbedBuilder, SlashCommandBuilder } from "discord.js"
+import { EmbedBuilder, SlashCommandBuilder } from "@discordjs/builders"
 
 const root = "https://gsi.fly.dev"
 
@@ -43,7 +43,7 @@ export default {
 		const result = await res.json()
 
 		const embed = new EmbedBuilder()
-			.setColor("Random")
+			// .setColor("Random")
 			.setTitle("📜 Codex of Teyvat")
 			.setFooter({ text: "Knowledge drawn from the threads of fate" })
 			.setTimestamp()
