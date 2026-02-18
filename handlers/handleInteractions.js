@@ -75,6 +75,6 @@ export async function handleComponents(body, user) {
 
     if (action && group[action]) {
         const { default: component } = await group.index();
-        return await component({ args, message, user, values });
+        return await component({ args, message, user, values }) ;
     }
 }

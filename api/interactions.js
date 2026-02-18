@@ -1,9 +1,9 @@
-import { InteractionType, InteractionResponseType } from "discord-api-types/v10";
+import { InteractionType, InteractionResponseType, ButtonStyle } from "discord-api-types/v10";
 // import { handleCommands, handleComponents } from "../handlers/handleInteractions.js"
 // 
 // import { Redis } from "@upstash/redis";
 import DCutils from "../handlers/DCutils.js";
-import { codeBlock } from "@discordjs/builders";
+import { ActionRowBuilder, ButtonBuilder, codeBlock, EmbedBuilder } from "@discordjs/builders";
 import nacl from "tweetnacl";
 import { handleCommands, handleComponents } from "../handlers/handleInteractions.js";
 
@@ -63,8 +63,9 @@ export default async function handler(req, res) {
     return res.status(401).end("Invalid Signature");
   }
 
+  const body = JSON.parse(rawBody);
+
   try {
-    const body = JSON.parse(rawBody);
     let user;
 
     switch (body.type) {
@@ -91,13 +92,32 @@ export default async function handler(req, res) {
     /** @type {Error} */
     const err = /** @type {any} */ (error);
 
-    console.error(error)
-    DCutils.sendMessage({ content: codeBlock("javascript", err.stack || err.toString()) })
+    const errorBlock = codeBlock("javascript", (err.stack || err.toString()).slice(0, 1900))
+    /** @type {import("discord-api-types/v10").APIUser} */
+    const user = body.user || body.member?.user
+
+    const embed = new EmbedBuilder()
+      .setAuthor({ name: user.global_name || user.username, iconURL: DCutils.avatarURL(user) })
+      .setTitle(err.name)
+      .setDescription(err.message + errorBlock)
+      .setTimestamp()
+
+    await DCutils.sendMessage({ embeds: [embed] })
         
     return res.status(200).json({
       type: InteractionResponseType.ChannelMessageWithSource,
       data: {
-        content: codeBlock("javascript", err.stack || err.toString()),
+        content: "Tis' interaction has failed, an automatic report has been sent!",
+        components: [
+          new ActionRowBuilder()
+            .addComponents(
+              new ButtonBuilder()
+                .setStyle(ButtonStyle.Link)
+                .setEmoji({ name: "🔗" })
+                .setLabel("View Report")
+                .setURL("https://discord.gg/cZ8gdj4CrY")
+            )
+        ],
         flags: 64
       }
     })

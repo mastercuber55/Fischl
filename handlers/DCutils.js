@@ -1,5 +1,8 @@
 // module: DCutils
 
+/**
+ * @param {import("discord-api-types/v10").APIUser} user 
+*/
 export function avatarURL(user, { format = "png", size = "1024" } = {}) {
   if (!user.avatar) {
     const defaultIndex = BigInt(user.id) % 6n;
@@ -22,8 +25,8 @@ export function disableComponents(components) {
   }));
 }
 
-export function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
-  fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
+export async function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
+  await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
     method: "POST",
     headers: {
       "Authorization": `Bot ${process.env.DISCORD_TOKEN}`,

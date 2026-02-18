@@ -1,0 +1,410 @@
+{
+  "Amber": {
+    "id": 1,
+    "name": "Amber",
+    "rarity": 4,
+    "weapon": "Bow",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Amber"
+  },
+  "Barbara": {
+    "id": 2,
+    "name": "Barbara",
+    "rarity": 4,
+    "weapon": "Catalyst",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Barbara"
+  },
+  "Beidou": {
+    "id": 3,
+    "name": "Beidou",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Beidou"
+  },
+  "Bennett": {
+    "id": 4,
+    "name": "Bennett",
+    "rarity": 4,
+    "weapon": "Sword",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Bennett"
+  },
+  "Chongyun": {
+    "id": 5,
+    "name": "Chongyun",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Chongyun"
+  },
+  "Fischl": {
+    "id": 6,
+    "name": "Fischl",
+    "rarity": 4,
+    "weapon": "Bow",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Fischl"
+  },
+  "Kaeya": {
+    "id": 7,
+    "name": "Kaeya",
+    "rarity": 4,
+    "weapon": "Sword",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kaeya"
+  },
+  "Lisa": {
+    "id": 8,
+    "name": "Lisa",
+    "rarity": 4,
+    "weapon": "Catalyst",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Lisa"
+  },
+  "Ningguang": {
+    "id": 9,
+    "name": "Ningguang",
+    "rarity": 4,
+    "weapon": "Catalyst",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Ningguang"
+  },
+  "Noelle": {
+    "id": 10,
+    "name": "Noelle",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Noelle"
+  },
+  "Razor": {
+    "id": 11,
+    "name": "Razor",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Razor"
+  },
+  "Sucrose": {
+    "id": 12,
+    "name": "Sucrose",
+    "rarity": 4,
+    "weapon": "Catalyst",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Sucrose"
+  },
+  "Xiangling": {
+    "id": 13,
+    "name": "Xiangling",
+    "rarity": 4,
+    "weapon": "Polearm",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Xiangling"
+  },
+  "Xingqiu": {
+    "id": 14,
+    "name": "Xingqiu",
+    "rarity": 4,
+    "weapon": "Sword",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Xingqiu"
+  },
+  "Diluc": {
+    "id": 15,
+    "name": "Diluc",
+    "rarity": 5,
+    "weapon": "Claymore",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Diluc"
+  },
+  "Jean": {
+    "id": 16,
+    "name": "Jean",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Jean"
+  },
+  "Mona": {
+    "id": 17,
+    "name": "Mona",
+    "rarity": 5,
+    "weapon": "Catalyst",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Mona"
+  },
+  "Keqing": {
+    "id": 18,
+    "name": "Keqing",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Keqing"
+  },
+  "Qiqi": {
+    "id": 19,
+    "name": "Qiqi",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Qiqi"
+  },
+  "Traveller (male)": {
+    "id": 20,
+    "name": "Traveller (male)",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "None",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Traveler"
+  },
+  "Traveller (female)": {
+    "id": 21,
+    "name": "Traveller (female)",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "None",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Traveler"
+  },
+  "Venti": {
+    "id": 22,
+    "name": "Venti",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Venti"
+  },
+  "Klee": {
+    "id": 23,
+    "name": "Klee",
+    "rarity": 5,
+    "weapon": "Catalyst",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Klee"
+  },
+  "Xinyan": {
+    "id": 24,
+    "name": "Xinyan",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Xinyan"
+  },
+  "Zhongli": {
+    "id": 25,
+    "name": "Zhongli",
+    "rarity": 5,
+    "weapon": "Polearm",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Zhongli"
+  },
+  "Diona": {
+    "id": 26,
+    "name": "Diona",
+    "rarity": 4,
+    "weapon": "Bow",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Diona"
+  },
+  "Tartaglia": {
+    "id": 27,
+    "name": "Tartaglia",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Tartaglia"
+  },
+  "Ganyu": {
+    "id": 28,
+    "name": "Ganyu",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Ganyu"
+  },
+  "Albedo": {
+    "id": 29,
+    "name": "Albedo",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Albedo"
+  },
+  "Hu Tao": {
+    "id": 30,
+    "name": "Hu Tao",
+    "rarity": 5,
+    "weapon": "Polearm",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Hu_Tao"
+  },
+  "Xiao": {
+    "id": 31,
+    "name": "Xiao",
+    "rarity": 5,
+    "weapon": "Polearm",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Xiao"
+  },
+  "Rosaria": {
+    "id": 32,
+    "name": "Rosaria",
+    "rarity": 4,
+    "weapon": "Polearm",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Rosaria"
+  },
+  "Eula": {
+    "id": 33,
+    "name": "Eula",
+    "rarity": 5,
+    "weapon": "Claymore",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Eula"
+  },
+  "Yanfei": {
+    "id": 34,
+    "name": "Yanfei",
+    "rarity": 4,
+    "weapon": "Catalyst",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Yanfei"
+  },
+  "Kazuha": {
+    "id": 35,
+    "name": "Kazuha",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kaedehara_Kazuha"
+  },
+  "Ayaka": {
+    "id": 36,
+    "name": "Ayaka",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kamisato_Ayaka"
+  },
+  "Sayu": {
+    "id": 37,
+    "name": "Sayu",
+    "rarity": 4,
+    "weapon": "Claymore",
+    "vision": "Anemo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Sayu"
+  },
+  "Yoimiya": {
+    "id": 38,
+    "name": "Yoimiya",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Yoimiya"
+  },
+  "Sara": {
+    "id": 39,
+    "name": "Sara",
+    "rarity": 4,
+    "weapon": "Bow",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kujou_Sara"
+  },
+  "Raiden Shogun": {
+    "id": 40,
+    "name": "Raiden Shogun",
+    "rarity": 5,
+    "weapon": "Polearm",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Raiden_Shogun"
+  },
+  "Kokomi": {
+    "id": 41,
+    "name": "Kokomi",
+    "rarity": 5,
+    "weapon": "Catalyst",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Sangonomiya_Kokomi"
+  },
+  "Thoma": {
+    "id": 42,
+    "name": "Thoma",
+    "rarity": 4,
+    "weapon": "Polearm",
+    "vision": "Pyro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Thoma"
+  },
+  "Gorou": {
+    "id": 43,
+    "name": "Gorou",
+    "rarity": 4,
+    "weapon": "Bow",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Gorou"
+  },
+  "Itto": {
+    "id": 44,
+    "name": "Itto",
+    "rarity": 5,
+    "weapon": "Claymore",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Arataki_Itto"
+  },
+  "Yun Jin": {
+    "id": 45,
+    "name": "Yun Jin",
+    "rarity": 4,
+    "weapon": "Polearm",
+    "vision": "Geo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Yun_Jin"
+  },
+  "Shenhe": {
+    "id": 46,
+    "name": "Shenhe",
+    "rarity": 5,
+    "weapon": "Polearm",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Shenhe"
+  },
+  "Yae": {
+    "id": 47,
+    "name": "Yae",
+    "rarity": 5,
+    "weapon": "Catalyst",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Yae_Miko"
+  },
+  "Ayato": {
+    "id": 48,
+    "name": "Ayato",
+    "rarity": 5,
+    "weapon": "Sword",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kamisato_Ayato"
+  },
+  "Yelan": {
+    "id": 49,
+    "name": "Yelan",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Hydro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Yelan"
+  },
+  "Aloy": {
+    "id": 50,
+    "name": "Aloy",
+    "rarity": 5,
+    "weapon": "Bow",
+    "vision": "Cryo",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Aloy"
+  },
+  "Kuki": {
+    "id": 51,
+    "name": "Kuki",
+    "rarity": 4,
+    "weapon": "Sword",
+    "vision": "Electro",
+    "wiki_url": "https://genshin-impact.fandom.com/wiki/Kuki_Shinobu"
+  }
+}

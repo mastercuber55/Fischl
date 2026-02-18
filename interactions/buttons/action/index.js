@@ -11,7 +11,7 @@ export default async ({ args, user }) => {
         return {
             type: InteractionResponseType.ChannelMessageWithSource,
             data: {
-                content: "You look lonely. **/action** can fix that, hopefully...",
+                content: "Thou lack the authority for execution of tis' interaction.",
                 flags: 64
             },
         }

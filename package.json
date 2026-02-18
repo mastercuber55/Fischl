@@ -6,8 +6,8 @@
   "dependencies": {
     "@discordjs/builders": "^1.13.1",
     "@upstash/redis": "^1.35.6",
-    "discord-interactions": "^4.4.0",
     "dotenv": "^16.5.0",
+    "genshin-db": "^5.2.8",
     "inquirer": "^12.10.0",
     "node-fetch": "^3.3.2",
     "tweetnacl": "^1.0.3"
