@@ -25,8 +25,8 @@ export function disableComponents(components) {
   }));
 }
 
-export async function sendMessage(data, channelId = process.env.LOG_CHANNEL) {
-  await fetch(`https://discord.com/api/v10/channels/${channelId}/messages`, {
+export async function sendMessage(data, channelID) {
+  await fetch(`https://discord.com/api/v10/channels/${channelID}/messages`, {
     method: "POST",
     headers: {
       "Authorization": `Bot ${process.env.DISCORD_TOKEN}`,

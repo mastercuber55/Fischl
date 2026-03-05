@@ -1,16 +1,13 @@
 import { InteractionType, InteractionResponseType, ButtonStyle } from "discord-api-types/v10";
-// import { handleCommands, handleComponents } from "../handlers/handleInteractions.js"
-// 
-// import { Redis } from "@upstash/redis";
+
 import DCutils from "../handlers/DCutils.js";
 import { ActionRowBuilder, ButtonBuilder, codeBlock, EmbedBuilder } from "@discordjs/builders";
 import nacl from "tweetnacl";
 import { handleCommands, handleComponents } from "../handlers/handleInteractions.js";
+import { get } from "@vercel/edge-config";
 
-// globalThis.redis = globalThis.redis || Redis.fromEnv();
 
 export const config = {
-  runtime: "nodejs",
   api: {
     bodyParser: false
   }
@@ -29,20 +26,12 @@ function verifySignature(body, signature, timestamp) {
 /** @param {import('@vercel/node').VercelRequest} req */
 function getRawBody(req) {
   return new Promise((resolve, reject) => {
-    let data = "";
+    let data = ""
 
-    req.on("data", chunk => {
-      data += chunk;
-    });
-
-    req.on("end", () => {
-      resolve(data);
-    });
-
-    req.on("error", err => {
-      reject(err);
-    });
-  });
+    req.on("data", chunk => data += chunk)
+    req.on("end", () => resolve(data))
+    req.on("error", err => reject(err))
+  })
 }
 
 
@@ -63,10 +52,11 @@ export default async function handler(req, res) {
     return res.status(401).end("Invalid Signature");
   }
 
-  const body = JSON.parse(rawBody);
+  /** @type {import("discord-api-types/v10").APIInteraction} body */
+  const body = JSON.parse(rawBody); 
+  const user = body.user || body.member?.user;
 
   try {
-    let user;
 
     switch (body.type) {
       case InteractionType.Ping:
@@ -74,17 +64,15 @@ export default async function handler(req, res) {
         break;
       
       case InteractionType.ApplicationCommand:
-        user = body.user || body.member?.user;
         return res.status(200).json(await handleCommands(body, user))
         break;
       
       case InteractionType.MessageComponent:
-        user = body.user || body.member?.user;
         res.status(200).json(await handleComponents(body, user))
         break;
 
       default: 
-        res.status(200).json({ type: InteractionResponseType.DeferredChannelMessageWithSource })
+        res.status(200).json({ content: "Tis' interaction rests unknown!" })
         break;
     }
 
@@ -93,8 +81,6 @@ export default async function handler(req, res) {
     const err = /** @type {any} */ (error);
 
     const errorBlock = codeBlock("javascript", (err.stack || err.toString()).slice(0, 1900))
-    /** @type {import("discord-api-types/v10").APIUser} */
-    const user = body.user || body.member?.user
 
     const embed = new EmbedBuilder()
       .setAuthor({ name: user.global_name || user.username, iconURL: DCutils.avatarURL(user) })
@@ -102,7 +88,7 @@ export default async function handler(req, res) {
       .setDescription(err.message + errorBlock)
       .setTimestamp()
 
-    await DCutils.sendMessage({ embeds: [embed] })
+    await DCutils.sendMessage({ content: `<@${user.id}>`, embeds: [embed] }, await get("reports-channel-ID"))
         
     return res.status(200).json({
       type: InteractionResponseType.ChannelMessageWithSource,
@@ -115,7 +101,7 @@ export default async function handler(req, res) {
                 .setStyle(ButtonStyle.Link)
                 .setEmoji({ name: "🔗" })
                 .setLabel("View Report")
-                .setURL("https://discord.gg/cZ8gdj4CrY")
+                .setURL(await get("reports-channel-invite"))
             )
         ],
         flags: 64

@@ -20,13 +20,8 @@ export default {
     const targetUser = data?.resolved?.users?.[targetId] || user;
     const url = DCutils.avatarURL(targetUser, { size: "1024" });
 
-    const embed = new EmbedBuilder()
-      .setTitle(`✨ ${targetUser.username}'s Avatar`)
-      .setImage(url)
-      // .setColor("Random");
-
     return {
-      embeds: [embed]
+      content: url
     };
   }
 };

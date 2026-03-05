@@ -6,7 +6,7 @@ global.redis = Redis.fromEnv()
 const redis = global.redis
 
 /** 
- * @param {import("discord-api-types/v10").APIChatInputApplicationCommandInteraction} body 
+ * @param {import("discord-api-types/v10").APIApplicationCommandInteraction} body 
  * @param {import("discord-api-types/v10").APIUser} user 
 */
 export async function handleCommands(body, user) {

@@ -16,6 +16,7 @@ export const commands = {
 	instagram: () => import("../interactions/commands/Utilities/instagram.js"),
 	reel: () => import("../interactions/commands/Utilities/reel.js"),
 	roblox: () => import("../interactions/commands/Utilities/roblox.js"),
+	dev: () => import("../interactions/commands/Utilities/dev.js")
 };
 
 export const buttons = {

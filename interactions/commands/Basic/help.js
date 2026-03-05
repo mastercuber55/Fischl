@@ -12,6 +12,7 @@ import commands from "../../../cache/commands.json" with { type: "json" }
 import categories from "../../../cache/categories.json" with { type: "json" }
 import images from "../../../cache/images.js"
 import DCutils from "../../../handlers/DCutils.js"
+import { get } from "@vercel/edge-config"
 
 export default {
     data: new SlashCommandBuilder()
@@ -92,10 +93,16 @@ export default {
             .setEmoji({ name: "👾" })
             .setLabel("Invite")
             .setStyle(ButtonStyle.Link)
-            .setURL("https://discord.com/oauth2/authorize?client_id=1360871728770846733");
+            .setURL("https://discord.com/oauth2/authorize?client_id=" + process.env.DISCORD_CLIENT_ID);
+
+        const server = new ButtonBuilder()
+            .setEmoji({ name: "🌐" })
+            .setLabel("Server")
+            .setStyle(ButtonStyle.Link)
+            .setURL(await get("default-channel-invite"));
 
         const rowa = new ActionRowBuilder().addComponents(menu);
-        const rowb = new ActionRowBuilder().addComponents(website, invite);
+        const rowb = new ActionRowBuilder().addComponents(website, invite, server);
 
         return { embeds: [embed], components: [rowa, rowb] };
     },
