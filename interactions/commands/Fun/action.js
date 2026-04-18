@@ -60,13 +60,13 @@ export default {
     const resData = json.results[0];
 
     const embed = new EmbedBuilder()
-      .setDescription(`***${user.global_name || user.username}** ${type}s **${targetUser.global_name || targetUser.username}***`)
+      .setDescription(`*<@${user.id}> ${type}s <@${targetUser.id}>*`)
       .setImage(resData?.url)
       // .setColor("Random")
 
     const back = new ButtonBuilder()
       .setStyle(ButtonStyle.Primary)
-      .setCustomId(`action|${user.global_name || user.username}|${targetUser.global_name || targetUser.username}|${type}`)
+      .setCustomId(`action|${user.id}|${targetUser.id}|${type}`)
       .setLabel(`${type} back`)
 
     const row = new ActionRowBuilder()

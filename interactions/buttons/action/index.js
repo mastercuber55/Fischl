@@ -5,9 +5,14 @@ import {
 } from "@discordjs/builders"
 import { InteractionResponseType, ButtonStyle } from "discord-api-types/v10"
 
+/**
+ * @param {{ args: string[], user: import("discord-api-types/v10").APIUser }} param0
+ */
 export default async ({ args, user }) => {
 
-    if (user.global_name != args[1] && user.global_name != args[2]) {
+    // well it has other arguments too but it works
+
+    if (!args.includes(user.id)) {
         return {
             type: InteractionResponseType.ChannelMessageWithSource,
             data: {
@@ -34,10 +39,10 @@ export default async ({ args, user }) => {
         .addComponents(back)
 
     // What if the slash command user presses the button?
-    if (user.global_name == args[1]) { 
-        embed.setDescription(`***${args[1]}** ${args[3]}s **${args[2]} again***`);
-    } else if (user.global_name == args[2]) {
-        embed.setDescription(`***${args[2]}** ${args[3]}s **${args[1]} back***`);
+    if (user.id == args[1]) { 
+        embed.setDescription(`*<@${args[1]}> ${args[3]}s <@${args[2]}> again*`);
+    } else if (user.id == args[2]) {
+        embed.setDescription(`*<@${args[2]}> ${args[3]}s <@${args[1]}> back*`);
     }
 
     return {
