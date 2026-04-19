@@ -70,17 +70,27 @@ export default {
         const menu = new StringSelectMenuBuilder()
             .setCustomId(`help|${user.id}`)
             .setPlaceholder("Choose a path of fate…")
-            .addOptions(
-                new StringSelectMenuOptionBuilder()
-                    .setLabel("📘 Basic")
-                    .setValue("Basic"),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel("🎭 Fun")
-                    .setValue("Fun"),
-                new StringSelectMenuOptionBuilder()
-                    .setLabel("🛠️ Utilities")
-                    .setValue("Utilities"),
-            );
+                .addOptions(
+                    new StringSelectMenuOptionBuilder()
+                        .setLabel("📘 Basic")
+                        .setValue("Basic")
+                        .setDescription("The fundamental decrees and essential knowledge of the realm."),
+
+                    new StringSelectMenuOptionBuilder()
+                        .setLabel("🎭 Fun")
+                        .setValue("Fun")
+                        .setDescription("Whimsical diversions and amusements for the court."),
+
+                    new StringSelectMenuOptionBuilder()
+                        .setLabel("🛠️ Utilities")
+                        .setValue("Utilities")
+                        .setDescription("Tools and mechanisms to navigate the threads of fate."),
+
+                    new StringSelectMenuOptionBuilder()
+                        .setLabel("💰 Economy")
+                        .setValue("Economy")
+                        .setDescription("View the royal treasury and claim thy Mora ✨"),
+                );
 
         const website = new ButtonBuilder()
             .setEmoji({ name: "🔗" })

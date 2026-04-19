@@ -6,6 +6,16 @@ import { Redis } from "@upstash/redis";
 global.redis = Redis.fromEnv()
 const redis = global.redis
 
+function formatTime(ttl) {
+  const h = Math.floor(ttl / 3600);
+  const m = Math.floor((ttl % 3600) / 60);
+  const s = ttl % 60;
+
+  if (h > 0) return `${h}h ${m}m`;
+  if (m > 0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
 /** 
  * @param {import("discord-api-types/v10").APIApplicationCommandInteraction} body 
  * @param {import("discord-api-types/v10").APIUser} user 
@@ -25,6 +35,27 @@ export async function handleCommands(body, user) {
         }
     const { default: command } = await loader()
 
+    if (command.cooldown != undefined) {
+      const key = `cooldown:${command.data.name}:${user.id}`;
+
+      const result = await redis.set(key, "1", {
+        nx: true,
+        ex: command.cooldown
+      });
+
+      if (!result) {
+
+        const ttl = await redis.ttl(key);
+        
+        return {
+          type: 4,
+          data: {
+            content: `⏳ The threads of fate are yet entwined… thou must await ${formatTime(ttl)} before the Prinzessin permits thine action once more.`
+          }
+        };
+      }
+    }
+
     const json = {
         type: 4,
         data: {
@@ -39,7 +70,7 @@ export async function handleCommands(body, user) {
         if (rand < 0.05) {
             const amount = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
             json.data.content += `\n-# Hehe~ The Prinzessin bestows upon thee ${amount} Mora! Spend it wisely, lest fate mock thy thrift!`
-            redis.hincrby(`${user.id}`, "mora", amount);
+            redis.hincrby(user.id, "mora", amount);
         }
     }
 

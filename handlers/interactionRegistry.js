@@ -4,6 +4,12 @@ export const commands = {
 	profile: () => import("../interactions/commands/Basic/profile.js"),
 	say: () => import("../interactions/commands/Basic/say.js"),
 
+	// Economy
+	daily: () => import("../interactions/commands/Economy/daily.js"),
+	weekly: () => import("../interactions/commands/Economy/weekly.js"),
+	monthly: () => import("../interactions/commands/Economy/monthly.js"),
+	dispatch: () => import("../interactions/commands/Economy/dispatch.js"),
+
 	// Fun
 	action: () => import("../interactions/commands/Fun/action.js"),
 	coinflip: () => import("../interactions/commands/Fun/coinflip.js"),

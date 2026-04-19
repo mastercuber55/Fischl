@@ -57,6 +57,42 @@
     "type": 1
   },
   {
+    "options": [],
+    "name": "daily",
+    "description": "Claim thy daily blessing of Mora from the Prinzessin ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [],
+    "name": "monthly",
+    "description": "An epochal tribute from the heart of the Immernachtreich ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [],
+    "name": "weekly",
+    "description": "Receive a bountiful weekly tribute from the Immernachtreich ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
     "options": [
       {
         "type": 3,
@@ -196,55 +232,6 @@
   {
     "options": [
       {
-        "type": 3,
-        "name": "name",
-        "description": "The true name by which they are known",
-        "required": false
-      },
-      {
-        "type": 3,
-        "name": "region",
-        "description": "The nation that claims their allegiance",
-        "required": false
-      },
-      {
-        "type": 3,
-        "name": "vision",
-        "description": "The element that answers their call",
-        "required": false
-      },
-      {
-        "type": 3,
-        "name": "rarity",
-        "description": "The brilliance of their constellation",
-        "required": false
-      },
-      {
-        "type": 3,
-        "name": "weapon",
-        "description": "The weapon they wield",
-        "required": false
-      },
-      {
-        "type": 3,
-        "name": "model_type",
-        "description": "The form their vessel takes",
-        "required": false
-      }
-    ],
-    "name": "search",
-    "description": "Peer into the threads of fate to find a soul of Teyvat ✨",
-    "contexts": [
-      0,
-      1,
-      2
-    ],
-    "dm_permission": true,
-    "type": 1
-  },
-  {
-    "options": [
-      {
         "name": "traveler",
         "description": "Whose avatar do you seek?",
         "required": false,
@@ -287,6 +274,12 @@
         "name": "link",
         "description": "The reel link you wish to share 🌙",
         "required": true
+      },
+      {
+        "type": 3,
+        "name": "caption",
+        "description": "A custom caption for the reel ✨",
+        "required": false
       }
     ],
     "name": "reel",
