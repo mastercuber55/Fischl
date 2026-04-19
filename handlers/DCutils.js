@@ -15,6 +15,10 @@ export function avatarURL(user, { format = "png", size = "1024" } = {}) {
   return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.${format}?size=${size}`
 }
 
+export function getRandomColor() {
+  return Math.floor(Math.random() * 0xffffff)
+}
+
 export function disableComponents(components) {
   return components.map(row => ({
     type: row.type,

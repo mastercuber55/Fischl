@@ -10,13 +10,21 @@ export default {
         .setDescription("The reel link you wish to share 🌙")
         .setRequired(true)
     ),
+    .addStringOption(option =>
+      option
+      .setName("caption")
+      .setDescription("A custom caption for the reel ✨")
+      .setRequired(false)
+    )
   run: async ({ data }) => {
-    const link = data.options[0].value
+    const link = data.options.find(o => o.name === "link").value;
+    const caption = data.options.find(o => o.name === "caption")?.value;
+    
     const res = await reel(link)
 
     if (res.success == 1) {
       return {
-        content: `📸✨ *A vision appears…*\n\n[Instagram Reel](${res.data[0].url.replace(/(&dl=1)+$/, "")})`
+        content: `\n\n[${caption || "📸✨ *A vision appears…*"}](${res.data[0].url.replace(/(&dl=1)+$/, "")})`
       }
     } else {
       return {
