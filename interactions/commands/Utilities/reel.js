@@ -9,13 +9,13 @@ export default {
         .setName("link")
         .setDescription("The reel link you wish to share 🌙")
         .setRequired(true)
-    ),
+    )
     .addStringOption(option =>
       option
       .setName("caption")
       .setDescription("A custom caption for the reel ✨")
       .setRequired(false)
-    )
+    ),
   run: async ({ data }) => {
     const link = data.options.find(o => o.name === "link").value;
     const caption = data.options.find(o => o.name === "caption")?.value;

@@ -1,5 +1,6 @@
 import { ComponentType } from "discord-api-types/v10"
 import interactionRegistry from "./interactionRegistry.js";
+import DCutils from "./DCutils.js"
 import { Redis } from "@upstash/redis";
 
 global.redis = Redis.fromEnv()
@@ -27,7 +28,7 @@ export async function handleCommands(body, user) {
     const json = {
         type: 4,
         data: {
-            ...await command.run({ data, user }),
+            ...await command.run({ data, user, DCutils }),
             flags: command.ephemeral ? 64 : 0
         }
     }
@@ -69,12 +70,12 @@ export async function handleComponents(body, user) {
     if (group.index) {
         const { default: index } = await group.index();
 
-        const preResult = await index({ args, message, user, values })
+        const preResult = await index({ args, message, user, values, DCutils })
         if (preResult) return preResult
     }
 
     if (action && group[action]) {
         const { default: component } = await group.index();
-        return await component({ args, message, user, values }) ;
+        return await component({ args, message, user, values, DCutils }) ;
     }
 }

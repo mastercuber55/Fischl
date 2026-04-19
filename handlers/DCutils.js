@@ -51,5 +51,6 @@ export default {
   avatarURL,
   disableComponents,
   sendMessage,
-  getUser
+  getUser,
+  getRandomColor
 }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { SlashCommandBuilder, EmbedBuilder } from "@discordjs/builders";
 
 async function jfetch(url, opts) {
@@ -17,7 +16,7 @@ export default {
         .setRequired(true)
     ),
   ephemeral: false,
-  run: async ({ data }) => {
+  run: async ({ data, DCutils }) => {
     const username = data.options?.find(opt => opt.name === "username")?.value;
 
     const res = await fetch("https://users.roblox.com/v1/usernames/users", {
@@ -41,10 +40,10 @@ export default {
     const user = await jfetch(`https://users.roblox.com/v1/users/${userId}`);
 
     const embed = new EmbedBuilder()
-      .setColor("Random")
+      .setColor(DCutils.getRandomColor())
       .setTitle(`✨ ${user.displayName} (${username})`)
       .setDescription(user.description || "🌙 This traveler has left no words behind…")
-      .setImage(avatar.data[0].imageUrl)
+      .setImage(avatar.data[0]?.imageUrl || null)
       .setFooter({ text: "🕯️ Joined Roblox" })
       .setTimestamp(new Date(user.created));
 

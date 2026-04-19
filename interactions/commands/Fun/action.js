@@ -47,7 +47,7 @@ export default {
  * @param {import("discord-api-types/v10").APIChatInputApplicationCommandInteractionData} ctx.data
  * @param {import("discord-api-types/v10").APIUser} ctx.user
  */
-  async run({ data, user }) {
+  async run({ data, user, DCutils }) {
     const option1 = data.options?.find((opt) => opt.name == "friend");
     const targetId = option1?.type === ApplicationCommandOptionType.User ? option1.value : null;
     const targetUser = data?.resolved?.users?.[targetId];
@@ -115,7 +115,7 @@ export default {
     const embed = new EmbedBuilder()
       .setDescription(`*<@${user.id}> ${type}s <@${targetUser.id}>*`)
       .setImage(resData?.url)
-      // .setColor("Random")
+      .setColor(DCutils.getRandomColor())
 
     const back = new ButtonBuilder()
       .setStyle(ButtonStyle.Primary)

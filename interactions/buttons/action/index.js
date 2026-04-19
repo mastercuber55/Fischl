@@ -8,7 +8,7 @@ import { InteractionResponseType, ButtonStyle } from "discord-api-types/v10"
 /**
  * @param {{ args: string[], user: import("discord-api-types/v10").APIUser }} param0
  */
-export default async ({ args, user }) => {
+export default async ({ args, user, DCutils }) => {
 
     // well it has other arguments too but it works
 
@@ -28,7 +28,7 @@ export default async ({ args, user }) => {
 
     const embed = new EmbedBuilder()
         .setImage(resData?.url)
-        // .setColor("Random")
+        .setColor(DCutils.getRandomColor())
 
     const back = new ButtonBuilder()
         .setStyle(ButtonStyle.Primary)

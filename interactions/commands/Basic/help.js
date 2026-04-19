@@ -11,7 +11,6 @@ import { ButtonStyle } from "discord-api-types/v10"
 import commands from "../../../cache/commands.json" with { type: "json" }
 import categories from "../../../cache/categories.json" with { type: "json" }
 import images from "../../../cache/images.js"
-import DCutils from "../../../handlers/DCutils.js"
 import { get } from "@vercel/edge-config"
 
 export default {
@@ -27,11 +26,11 @@ export default {
 
     ephemeral: false,
 
-    run: async ({ data, user }) => {
+    run: async ({ data, user, DCutils }) => {
         const me = await DCutils.getUser();
 
         let embed = new EmbedBuilder()
-            // .setColor("Random")
+            .setColor(DCutils.getRandomColor())
             .setAuthor({
                 name: user.global_name,
                 iconURL: DCutils.avatarURL(user)
