@@ -36,24 +36,26 @@ export async function handleCommands(body, user) {
     const { default: command } = await loader()
 
     if (command.cooldown != undefined) {
-      const key = `cooldown:${command.data.name}:${user.id}`;
+        const key = `cooldown:${command.data.name}:${user.id}`;
 
-      const result = await redis.set(key, "1", {
-        nx: true,
-        ex: command.cooldown
-      });
+        const result = await redis.set(key, "1", {
+            nx: true,
+            ex: command.cooldown
+        });
 
-      if (!result) {
+        if (!result) {
+            const ttl = await redis.ttl(key);
+            
+            const expiresAt = Math.floor(Date.now() / 1000) + ttl;
 
-        const ttl = await redis.ttl(key);
-        
-        return {
-          type: 4,
-          data: {
-            content: `⏳ The threads of fate are yet entwined… thou must await ${formatTime(ttl)} before the Prinzessin permits thine action once more.`
-          }
-        };
-      }
+            return {
+                type: 4,
+                data: {
+                    content: `⏳ The threads of fate are yet entwined… thy next opportunity shall arise <t:${expiresAt}:R>, as the Prinzessin decrees.`,
+                    flags: 64
+                }
+            };
+        }
     }
 
     const json = {
