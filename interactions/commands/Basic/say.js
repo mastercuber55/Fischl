@@ -8,6 +8,7 @@ export default {
     .addStringOption(option => option
       .setName("decree")
       .setDescription("Thy decree to be echoed.")
+      .setRequired(true)
     ),
   ephemeral: false,
   allowEvents: true,

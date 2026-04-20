@@ -9,20 +9,20 @@ export const commands = {
 	weekly: () => import("../interactions/commands/Economy/weekly.js"),
 	monthly: () => import("../interactions/commands/Economy/monthly.js"),
 	dispatch: () => import("../interactions/commands/Economy/dispatch.js"),
+	transfer: () => import("../interactions/commands/Economy/transfer.js"),
+	leaderboard: () => import("../interactions/commands/Economy/leaderboard.js"),
 
 	// Fun
 	action: () => import("../interactions/commands/Fun/action.js"),
 	coinflip: () => import("../interactions/commands/Fun/coinflip.js"),
 	connect4: () => import("../interactions/commands/Fun/connect4.js"),
 	genderize: () => import("../interactions/commands/Fun/genderize.js"),
-	search: () => import("../interactions/commands/Fun/search.js"),
 
 	// Utilities
 	avatar: () => import("../interactions/commands/Utilities/avatar.js"),
 	instagram: () => import("../interactions/commands/Utilities/instagram.js"),
 	reel: () => import("../interactions/commands/Utilities/reel.js"),
 	roblox: () => import("../interactions/commands/Utilities/roblox.js"),
-	dev: () => import("../interactions/commands/Utilities/dev.js")
 };
 
 export const buttons = {
