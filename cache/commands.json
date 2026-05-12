@@ -43,11 +43,46 @@
         "type": 3,
         "name": "decree",
         "description": "Thy decree to be echoed.",
-        "required": false
+        "required": true
       }
     ],
     "name": "say",
     "description": "Hark! The Prinzessin echoes thy decree!",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [
+      {
+        "type": 3,
+        "choices": [
+          {
+            "name": "Heads",
+            "value": "heads"
+          },
+          {
+            "name": "Tails",
+            "value": "tails"
+          }
+        ],
+        "name": "side",
+        "description": "Declare thy chosen face of the coin—Heads or Tails?",
+        "required": true
+      },
+      {
+        "type": 4,
+        "name": "bet",
+        "description": "The amount of Mora thou dares to wager upon fate’s whim.",
+        "required": true
+      }
+    ],
+    "name": "coinflip",
+    "description": "Invoke fate and behold the coin’s revelation ✨",
     "contexts": [
       0,
       1,
@@ -70,8 +105,57 @@
   },
   {
     "options": [],
+    "name": "dispatch",
+    "description": "Dispatch Oz to survey the lands and gather spoils ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [],
+    "name": "leaderboard",
+    "description": "Witness the gathering of the world's riches beneath the twilight gaze! ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [],
     "name": "monthly",
     "description": "An epochal tribute from the heart of the Immernachtreich ✨",
+    "contexts": [
+      0,
+      1,
+      2
+    ],
+    "dm_permission": true,
+    "type": 1
+  },
+  {
+    "options": [
+      {
+        "name": "traveler",
+        "description": "The soul who shall receive thy tribute",
+        "required": true,
+        "type": 6
+      },
+      {
+        "type": 4,
+        "name": "amount",
+        "description": "The sum of Mora to be moved through the threads of fate",
+        "required": true
+      }
+    ],
+    "name": "transfer",
+    "description": "Transfer thy Mora to another soul within the realm ✨",
     "contexts": [
       0,
       1,
@@ -171,18 +255,6 @@
     ],
     "name": "action",
     "description": "Do something to someone...😈",
-    "contexts": [
-      0,
-      1,
-      2
-    ],
-    "dm_permission": true,
-    "type": 1
-  },
-  {
-    "options": [],
-    "name": "coinflip",
-    "description": "Invoke fate and behold the coin’s revelation ✨",
     "contexts": [
       0,
       1,

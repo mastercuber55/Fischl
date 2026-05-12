@@ -12,9 +12,11 @@ export const commands = {
 	transfer: () => import("../interactions/commands/Economy/transfer.js"),
 	leaderboard: () => import("../interactions/commands/Economy/leaderboard.js"),
 
+	// Casino
+	coinflip: () => import("../interactions/commands/Casino/coinflip.js"),
+
 	// Fun
 	action: () => import("../interactions/commands/Fun/action.js"),
-	coinflip: () => import("../interactions/commands/Fun/coinflip.js"),
 	connect4: () => import("../interactions/commands/Fun/connect4.js"),
 	genderize: () => import("../interactions/commands/Fun/genderize.js"),
 
@@ -28,6 +30,10 @@ export const commands = {
 export const buttons = {
 	action: {
 		index: () => import("../interactions/buttons/action/index.js"),
+	},
+
+	profile: {
+		index: () => import("../interactions/buttons/profile/index.js")
 	},
 
 	connect4: {
@@ -44,8 +50,13 @@ export const selectMenus = {
 	},
 };
 
+export const modals = {
+	profile: () => import("../interactions/modals/profile.js")
+}
+
 export default {
 	commands,
 	buttons,
 	selectMenus,
+	modals
 };

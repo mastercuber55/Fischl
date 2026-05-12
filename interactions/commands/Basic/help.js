@@ -90,6 +90,10 @@ export default {
                         .setLabel("💰 Economy")
                         .setValue("Economy")
                         .setDescription("View the royal treasury and claim thy Mora ✨"),
+                    new StringSelectMenuOptionBuilder()
+                        .setLabel("🎰 Casino")
+                        .setValue("Casino")
+                        .setDescription("Tempt fate itself—wager thy Mora in games of chance and fortune."),
                 );
 
         const website = new ButtonBuilder()

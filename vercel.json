@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/redis-heartbeat",
-      "schedule": "0 0 * * *"
-    }
-  ]
-}

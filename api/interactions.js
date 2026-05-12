@@ -3,7 +3,7 @@ import { InteractionType, InteractionResponseType, ButtonStyle } from "discord-a
 import DCutils from "../handlers/DCutils.js";
 import { ActionRowBuilder, ButtonBuilder, codeBlock, EmbedBuilder } from "@discordjs/builders";
 import nacl from "tweetnacl";
-import { handleCommands, handleComponents } from "../handlers/handleInteractions.js";
+import InteractionHandler from "../handlers/InteractionHandler.js";
 import { get } from "@vercel/edge-config";
 
 
@@ -40,7 +40,6 @@ function getRawBody(req) {
  * @param {import('@vercel/node').VercelResponse} res
  */
 export default async function handler(req, res) {
-  console.time("ACK");
   if (req.method !== "POST") 
     return res.status(405).send("Method Not Allowed")
 
@@ -64,11 +63,15 @@ export default async function handler(req, res) {
         break;
       
       case InteractionType.ApplicationCommand:
-        return res.status(200).json(await handleCommands(body, user))
+        return res.status(200).json(await InteractionHandler.commands(body, user))
         break;
       
       case InteractionType.MessageComponent:
-        res.status(200).json(await handleComponents(body, user))
+        res.status(200).json(await InteractionHandler.components(body, user))
+        break;
+
+      case InteractionType.ModalSubmit:
+        res.status(200).json(await InteractionHandler.modals(body, user))
         break;
 
       default: 
@@ -85,6 +88,7 @@ export default async function handler(req, res) {
     const embed = new EmbedBuilder()
       .setAuthor({ name: user.global_name || user.username, iconURL: DCutils.avatarURL(user) })
       .setTitle(err.name)
+      .setColor(DCutils.getRandomColor())
       .setDescription(err.message + errorBlock)
       .setTimestamp()
 
